@@ -6,6 +6,9 @@
   text-decoration: none;
   border-radius: 3px;
   line-height: 1;
+  border: none;
+  font-size: 1rem;
+  font-family: 'Titillium Web', Helvetica, sans-serif;
 
   &:hover {
     background: darken($brand-color, 10);
