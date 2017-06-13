@@ -9,6 +9,7 @@
   border: none;
   font-size: 1rem;
   font-family: 'Titillium Web', Helvetica, sans-serif;
+  cursor: pointer;
 
   &:hover {
     background: darken($brand-color, 10);
