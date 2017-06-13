@@ -1,0 +1,34 @@
+.step {
+  display: flex;
+  margin-bottom: 20px;
+  background: #FFF;
+  border-radius: 5px;
+  padding: 25px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+  small {
+    color: #b1b1b1;
+  }
+}
+
+.step__number {
+  span {
+    display: block;
+    margin: 0 20px 0 0;
+    width: 17px;
+    height: 17px;
+    background: #CEDDDB;
+    border: 2px solid #B2C1BF;
+    border-radius: 50%;
+    text-align: center;
+    color: #FFF;
+  }
+}
+
+.step__text {
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  -ms-flex-positive: 1;
+}

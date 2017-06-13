@@ -1,0 +1,120 @@
+.quickstart {
+  background: linear-gradient(to bottom, #002D54 0%, #006B7F 100%);
+  padding-top: 1px;
+
+  h1 {
+    text-align: center;
+    color: #FFF;
+  }
+
+  h2 {
+    margin: 0 0 6px 0;
+    font-size: 1.4rem;
+  }
+}
+
+.quickstart__placeholder {
+  height: 50px;
+  border: 1px dashed #FFF;
+  margin: 30px;
+  border-radius: 5px;
+}
+
+.quickstart__bg {
+  background: url('https://a.storyblok.com/f/39898/80d38cf845/puzzle.png') repeat-x;
+}
+
+.quickstart__container {
+  padding: 50px 0;
+  min-height: 100vh;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.quickstart__platforms {
+  margin-top: 30px;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    margin: 5px;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+}
+
+.quickstart__hint {
+  color: #FFF;
+  text-align: center;
+}
+
+.quickstart__inner-teaser {
+  padding: 10px 0;
+}
+
+.quickstart__teaser {
+  text-align: center;
+  background: #FFF;
+  color: #000;
+  margin: 20px;
+
+  svg {
+    font-size: 5rem;
+  }
+
+  h3 {
+    line-height: 1.5;
+  }
+
+  code {
+    font-size: 1rem;
+    background: #000;
+    color: #FFF;
+    padding: 2px 5px;
+    display: inline-block;
+  }
+}
+
+.quickstart__lang {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 40px;
+  text-align: center;
+
+  span {
+    margin: 5px 0;
+    display: block;
+    color: #000;
+    font-size: 11px;
+  }
+}
+
+.quickstart__t {
+  display: none;
+  overflow: auto;
+
+  pre {
+    display: block;
+    white-space: pre;
+    background: #f5f5f5;
+    font: 12px / 18px Consolas,monospace,serif;
+    color: #444;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    font-size: 0.9rem;
+    padding: 20px;
+    border-radius: 5px;
+
+    span {
+      font-style: italic;
+      color: #998;
+    }
+  }
+}
+
+.quickstart__t--active {
+  display: block;
+}

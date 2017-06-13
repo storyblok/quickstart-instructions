@@ -1,0 +1,80 @@
+<div class="quickstart">
+  <div class="quickstart__bg">
+    <div class="quickstart__container">
+      <h1>Let's create something</h1>
+
+      <div class="step">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>Create a component and define its structure</h2>
+          <p>
+            Start the tour clicking "Add component" in the sidebar.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>Fill in content</h2>
+          <p>
+            After you have created a component fill it with some text.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>Get the content</h2>
+
+          <div class="quickstart__langc">
+            <a class="quickstart__lang active" data-lang="storyblok">
+              <img src="https://a.storyblok.com/f/40479/52dd4927ef/storyblok_circle.svg" height="33">
+              <span>Storyblok</span>
+            </a>
+            <a class="quickstart__lang active" data-lang="ruby">
+              <img src="https://a.storyblok.com/f/40479/5b972f6821/ruby.svg" height="33">
+              <span>Ruby</span>
+            </a>
+            <a class="quickstart__lang" data-lang="javascript">
+              <img src="https://a.storyblok.com/f/40479/9a6bef0cd2/javascript.svg" height="33">
+              <span>JavaScript</span>
+            </a>
+            <a class="quickstart__lang" data-lang="nodejs">
+              <img src="https://a.storyblok.com/f/40479/600c85c25b/node.svg" height="33">
+              <span>Node.js</span>
+            </a>
+            <a class="quickstart__lang" data-lang="php">
+              <img src="https://a.storyblok.com/f/40479/dac5c0bb11/php.svg" height="33">
+              <span>PHP</span>
+            </a>
+            <a class="quickstart__lang" data-lang="python">
+              <img src="https://a.storyblok.com/f/40479/71495561c6/python.svg" height="33">
+              <span>Python</span>
+            </a>
+          </div>
+
+          <div class="quickstart__t quickstart__t--active" data-lang="ruby">
+            <pre><code>{%- raw -%}<span># Get the content of the current page</span>
+{{ story.content }}
+
+<span># Get multiple content entries from a folder called "news"</span>
+{% set newsitems from stories starts_with:'news', per_page: 3 %}
+{% for news in newsitems.data %}
+    {{ news }}
+{% endfor %}
+
+<span># Read more on the <a target="_blank" href="https://www.storyblok.com/docs/Rendering-Service/Theme-Documentation">theme documentation</a></span>
+{% endraw %}</code></pre>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="quickstart__hint">
+        Hint: Remove {% raw %}{% include 'quickstart' %}{% endraw %} from page.liquid to remove the quickstart instructions.
+      </div>
+    </div>
+  </div>
+</div>

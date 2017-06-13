@@ -1,0 +1,25 @@
+<div class="quickstart__teaser">
+  <!--
+  The _editable attribute makes the next
+  DOM-element clickable so the sidebar can
+  show the right component.
+  -->
+  {{ blok._editable }}
+  <div class="quickstart__inner-teaser">
+    <svg class="icon"><use xlink:href="#icon-congrats"></use></svg>
+    <h2>
+      <!--
+      You can access every attribute you
+      define in the schema in the blok variable
+      -->
+      {% if blok.headline == blank %}
+        Congrats, you have created a teaser!
+      {% else %}
+        {{ blok.headline }}
+      {% endif %}
+    </h2>
+    <h3>
+      Open <code>views/components/_teaser.liquid</code> to study the code.
+    </h3>
+  </div>
+</div>
