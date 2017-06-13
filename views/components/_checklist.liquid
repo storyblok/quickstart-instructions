@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step step--active">
         <div class="step__number"><span></span></div>
         <div class="step__text">
           <h2>Create a story</h2>
@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step {% if story.content.body != blank %} step--active {% endif %}">
         <div class="step__number"><span></span></div>
         <div class="step__text">
           <h2>Your first API Request</h2>
@@ -45,7 +45,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step {% if story.content.body != blank %} step--active {% endif %}">
         <div class="step__number"><span></span></div>
         <div class="step__text">
           <h2>Create your first component</h2>
