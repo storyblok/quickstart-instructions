@@ -17,8 +17,8 @@
     margin: 0 20px 0 0;
     width: 17px;
     height: 17px;
-    background: #f0f9f8;
-    border: 1px solid #B2C1BF;
+    background: #FFF;
+    border: 1px solid #e0e0e0;
     border-radius: 50%;
     text-align: center;
     color: #FFF;
@@ -28,8 +28,8 @@
 
 .step--active {
   .step__number span {
-    background: #aff3c4;
-    border-color: #80e6a0;
+    background: #b3e8e2;
+    border-color: #09b3af;
 
     &:after {
       content: ' ';
