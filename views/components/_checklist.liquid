@@ -31,30 +31,16 @@
           <h2>Your first API Request</h2>
           <p>
             It's all about your data - execute this simple GET Request to see the basic structure of the story you're currently editing here.
-            <button class="btn">Make a Call</button>
+            {% if story.content.body == blank %}<button class="btn" data-show="#first-api">Make a Call</button>{% endif %}
           </p>
-          <div class="quickstart__t quickstart__t--active">
-            <pre><code>{
-  "story": {
-    "name": "home",
-    "created_at": "2017-06-13T12:35:24.810Z",
-    "id": 47484,
-    "uuid": "7a4804f6-ba4f-4249-be33-50f1504d19a7",
-    "content": {
-      "_uid": "6cb7697f-fea1-4bb9-a1cd-e0c7328ed5da",
-      "body": [
-
-      ],
-      "component": "root"
-    },
-    "slug": "test",
-    "full_slug": "test"
-  }
-}</code></pre>
-          </div>
-          <p>You can do this API Request with every language you can think of - we [made some examples](link to the API request stuff) for you.</p>
-          <div class="quickstart__t quickstart__t--active">
-            <pre><code>curl -X GET "https://api.storyblok.com/v1/cdn/stories/home?token=xs8KfuZGvQVOM824AFUQDQtt"</code></pre>
+          <div id="first-api" {% if story.content.body == blank %} class="u-hidden"{% endif %}>
+            <div class="quickstart__t quickstart__t--active">
+              <pre><code data-pretty data-skip-body="true">{{story|json}}</code></pre>
+            </div>
+            <p>You can do this API Request with every language you can think of - we [made some examples](link to the API request stuff) for you.</p>
+            <div class="quickstart__t quickstart__t--active">
+              <pre><code>curl -X GET "https://api.storyblok.com/v1/cdn/stories/home?token=xs8KfuZGvQVOM824AFUQDQtt"</code></pre>
+            </div>
           </div>
         </div>
       </div>
@@ -74,32 +60,28 @@
         <div class="step__number"><span></span></div>
         <div class="step__text">
           <h2>Good job!</h2>
-          <p>You've just changed content and created your first unique content component! Let's see what changed after you've done that. <button>Run API Call</button></p>
-          <div class="quickstart__t quickstart__t--active">
-            <pre><code>{
-  "story": {
-    "name": "home",
-    "created_at": "2017-06-13T12:35:24.810Z",
-    "id": 47484,
-    "uuid": "7a4804f6-ba4f-4249-be33-50f1504d19a7",
-    "content": {
-      "_uid": "6cb7697f-fea1-4bb9-a1cd-e0c7328ed5da",
-      "body": [
-
-      ],
-      "component": "root"
-    },
-    "slug": "test",
-    "full_slug": "test"
-  }
-}</code></pre>
+          <p>You've just changed content and created your first unique content component! Let's see what changed after you've done that. <button class="btn" data-show="#second-api">Run API Call</button></p>
+          <div class="quickstart__t quickstart__t--active u-hidden" id="second-api">
+            <pre><code data-pretty data-skip-body="">{{story|json}}</code></pre>
           </div>
         </div>
       </div>
 
-      <div class="quickstart__hint">
-        Hint: Remove {% raw %}{% include 'quickstart' %}{% endraw %} from page.liquid to remove the quickstart instructions.
+      <div class="step">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>You can now choose</h2>
+          <p>
+            Your data now needs a presentation layer - if you want to add storyblok into your existing project or start with a technology you want by clicking on selfhosted. If you want to directly use Storyblok with the built-in [Rendering Service](Rendinger service link goes here).
+            <button>Existing Project / Selfhosted</button>
+            <button>Rendering Service / Hosted</button>
+          </p>
+        </div>
       </div>
+
+      {% comment %}<div class="quickstart__hint">
+        Hint: Remove {% raw %}{% include 'quickstart' %}{% endraw %} from page.liquid to remove the quickstart instructions.
+      </div>{% endcomment %}
     </div>
   </div>
 </div>
