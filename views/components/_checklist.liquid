@@ -1,0 +1,105 @@
+<div class="quickstart">
+  <div class="quickstart__bg">
+    <div class="quickstart__container">
+      <h1>Good Morning, Alex</h1>
+
+      <div class="step">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>Create a space</h2>
+          <p>
+            A space is a content repository. Think of it as a place to keep all the content related to one project.
+            In the quickstart using the CLI we've already created that space - but you can of course [create it manually](How to create a space link goes here).
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>Create a story</h2>
+          <p>
+            A story is a collection of instances of components filled with information. If you want to create a website you can go with - a story equals to a page.
+            With the CLI we've also created a story called "Home" for you. You can still have a look at the tutorial on [how to create a story].
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>Your first API Request</h2>
+          <p>
+            It's all about your data - execute this simple GET Request to see the basic structure of the story you're currently editing here.
+            <button>Make a Call</button>
+          </p>
+          <div class="quickstart__t quickstart__t--active">
+            <pre><code>{
+  "story": {
+    "name": "home",
+    "created_at": "2017-06-13T12:35:24.810Z",
+    "id": 47484,
+    "uuid": "7a4804f6-ba4f-4249-be33-50f1504d19a7",
+    "content": {
+      "_uid": "6cb7697f-fea1-4bb9-a1cd-e0c7328ed5da",
+      "body": [
+
+      ],
+      "component": "root"
+    },
+    "slug": "test",
+    "full_slug": "test"
+  }
+}</code></pre>
+          </div>
+          <p>You can do this API Request with every language you can think of - we [made some examples](link to the API request stuff) for you.</p>
+          <div class="quickstart__t quickstart__t--active">
+            <pre><code>curl -X GET "https://api.storyblok.com/v1/cdn/stories/home?token=xs8KfuZGvQVOM824AFUQDQtt"</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>Create your first component</h2>
+          <p>
+            You can create and nest your own set of components by simple pressing the 'add component' - we've arranged a tour for you so you won't get stuck anywhere.
+          </p>
+          <button>Start tour</button>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>Good job!</h2>
+          <p>You've just changed content and created your first unique content component! Let's see what changed after you've done that. <button>Run API Call</button></p>
+          <div class="quickstart__t quickstart__t--active">
+            <pre><code>{
+  "story": {
+    "name": "home",
+    "created_at": "2017-06-13T12:35:24.810Z",
+    "id": 47484,
+    "uuid": "7a4804f6-ba4f-4249-be33-50f1504d19a7",
+    "content": {
+      "_uid": "6cb7697f-fea1-4bb9-a1cd-e0c7328ed5da",
+      "body": [
+
+      ],
+      "component": "root"
+    },
+    "slug": "test",
+    "full_slug": "test"
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="quickstart__hint">
+        Hint: Remove {% raw %}{% include 'quickstart' %}{% endraw %} from page.liquid to remove the quickstart instructions.
+      </div>
+    </div>
+  </div>
+</div>
