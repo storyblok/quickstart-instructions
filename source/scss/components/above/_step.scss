@@ -17,11 +17,32 @@
     margin: 0 20px 0 0;
     width: 17px;
     height: 17px;
-    background: #CEDDDB;
-    border: 2px solid #B2C1BF;
+    background: #f0f9f8;
+    border: 1px solid #B2C1BF;
     border-radius: 50%;
     text-align: center;
     color: #FFF;
+    position: relative;
+  }
+}
+
+.step--active {
+  .step__number span {
+    background: #aff3c4;
+    border-color: #80e6a0;
+
+    &:after {
+      content: ' ';
+      display: block;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      top: -7px;
+      left: -1px;
+      z-index: 1;
+      background: no-repeat url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI0MS43NjVweCIgaGVpZ2h0PSIzNy42NDdweCIgdmlld0JveD0iMCAwIDQxLjc2NSAzNy42NDciIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQxLjc2NSAzNy42NDciIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNC45NDQsMTguOTY4IDE1LjI2LDMzLjc3MSAzNi44NzUsNS42NzEgMTQuNTk2LDI0Ljg1MyAiLz48L3N2Zz4=);
+      background-size: 25px 25px;
+    }
   }
 }
 
