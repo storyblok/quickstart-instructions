@@ -9,10 +9,18 @@ window.onload = () => {
 
     if (!!element.getAttribute('data-skip-body')) {
       json.content.body = []
+      element.innerHTML = JSON.stringify(clearStory(json), null, 2)
+    } else {
+      var formatted = JSON.stringify(clearStory(json), null, 2);
+      formatted = formatted.replace('"body": [', '"body": [<em>')
+      formatted = formatted.replace(`],
+    "component": "root"`, `</em>],
+    "component": "root"`)
+      element.innerHTML = formatted
     }
 
-    element.innerHTML = JSON.stringify(clearStory(json), null, 2)
   }
+
 
   // set api request steps as active if already done.
   var activeApiSteps = JSON.parse(window.localStorage.getItem('activeApiSteps'))
@@ -20,6 +28,7 @@ window.onload = () => {
     activeApiSteps = []
     window.localStorage.setItem('activeApiSteps', JSON.stringify(activeApiSteps))
   }
+
   for (var index = 0, max = activeApiSteps.length; index < max; index++) {
     var activeStep = activeApiSteps[index];
 
@@ -34,6 +43,7 @@ window.onload = () => {
     var actualStep = findAncestor(codeBlock, 'step')
     actualStep.classList.add('step--active')
   }
+
 
   // init show api request buttons.
   var requestButtons = document.querySelectorAll('[data-show]')

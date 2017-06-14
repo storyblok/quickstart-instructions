@@ -5,7 +5,6 @@
   border-radius: 5px;
   padding: 25px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-
   small {
     color: #b1b1b1;
   }
@@ -53,4 +52,12 @@
   flex-grow: 1;
   -ms-flex-positive: 1;
   min-width: 0px;
+}
+
+.step.step--active + .step {
+  opacity: 1;
+}
+
+.step + .step {
+  opacity: 0.4;
 }
