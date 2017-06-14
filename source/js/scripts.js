@@ -34,11 +34,13 @@ function initShowButton() {
 
 function initStartTourButtons() {
   var startTourButtons = document.querySelector('[data-start-tour]')
-  startTourButtons.addEventListener('click', () => {
-    if (window.storyblok) {
-      window.storyblok.startTour()
-    }
-  })
+  if (startTourButtons) {
+    startTourButtons.addEventListener('click', () => {
+      if (window.storyblok) {
+        window.storyblok.startTour()
+      }
+    })
+  }
 }
 
 function initPrettyPrint() {
@@ -75,15 +77,17 @@ function initActiveStates() {
     var activeStep = activeApiSteps[index];
 
     var codeBlock = document.querySelector(activeStep)
-    codeBlock.classList.remove('quickstart--hidden')
+    if (codeBlock)  {
+      codeBlock.classList.remove('quickstart--hidden')
 
-    var requestButton = document.querySelector(`[data-show-step="${activeStep}"]`)
-    if (requestButton) {
-      requestButton.classList.add('quickstart--hidden')
+      var requestButton = document.querySelector(`[data-show-step="${activeStep}"]`)
+      if (requestButton) {
+        requestButton.classList.add('quickstart--hidden')
+      }
+
+      var actualStep = findAncestor(codeBlock, 'step')
+      actualStep.classList.add('step--active')
     }
-
-    var actualStep = findAncestor(codeBlock, 'step')
-    actualStep.classList.add('step--active')
   }
 }
 
@@ -98,18 +102,19 @@ function initRequestApiButtons() {
     element.addEventListener('click', (event) => {
       var toShowId = event.currentTarget.getAttribute('data-show-step')
       var toShow = document.querySelector(event.currentTarget.getAttribute('data-show-step'))
+      if (toShow) {
+        event.currentTarget.classList.add('quickstart--hidden')
+        toShow.classList.remove('quickstart--hidden')
 
-      event.currentTarget.classList.add('quickstart--hidden')
-      toShow.classList.remove('quickstart--hidden')
+        var stepHistory = JSON.parse(window.localStorage.getItem(localStorageKey))
 
-      var stepHistory = JSON.parse(window.localStorage.getItem(localStorageKey))
+        if (stepHistory.indexOf(toShowId) == -1) {
+          stepHistory.push(toShowId)
+          window.localStorage.setItem(localStorageKey, JSON.stringify(stepHistory))
+        }
 
-      if (stepHistory.indexOf(toShowId) == -1) {
-        stepHistory.push(toShowId)
-        window.localStorage.setItem(localStorageKey, JSON.stringify(stepHistory))
+        findAncestor(event.currentTarget, 'step').classList.add('step--active')
       }
-
-      findAncestor(event.currentTarget, 'step').classList.add('step--active')
     })
   }
 }
