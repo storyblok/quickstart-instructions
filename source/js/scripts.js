@@ -1,5 +1,7 @@
 // pretty print on load
 window.onload = () => {
+  var currentStoryId = gup('_storyblok', window.location.href)
+  var localStorageKey = currentStoryId + 'active-api-steps'
 
   // pretty print the content jsons - and clear some data
   var toPrettyPrint = document.querySelectorAll('[data-pretty]')
@@ -9,10 +11,17 @@ window.onload = () => {
 
     if (!!element.getAttribute('data-skip-body')) {
       json.content.body = []
+      element.innerHTML = JSON.stringify(clearStory(json), null, 2)
+    } else {
+      var formatted = JSON.stringify(clearStory(json), null, 2);
+      formatted = formatted.replace('"body": [', '"body": [<em>')
+      formatted = formatted.replace(`],
+    "component": "root"`, `</em>],
+    "component": "root"`)
+      element.innerHTML = formatted
     }
-
-    element.innerHTML = JSON.stringify(clearStory(json), null, 2)
   }
+
 
   // set api request steps as active if already done.
   var activeApiSteps = JSON.parse(window.localStorage.getItem('activeApiSteps'))
@@ -20,6 +29,7 @@ window.onload = () => {
     activeApiSteps = []
     window.localStorage.setItem('activeApiSteps', JSON.stringify(activeApiSteps))
   }
+
   for (var index = 0, max = activeApiSteps.length; index < max; index++) {
     var activeStep = activeApiSteps[index];
 
@@ -34,6 +44,7 @@ window.onload = () => {
     var actualStep = findAncestor(codeBlock, 'step')
     actualStep.classList.add('step--active')
   }
+
 
   // init show api request buttons.
   var requestButtons = document.querySelectorAll('[data-show]')
@@ -86,4 +97,15 @@ function clearStory(story) {
   delete story.full_slug
   delete story.content._editable
   return story
+}
+
+// get url parameter
+function gup(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
