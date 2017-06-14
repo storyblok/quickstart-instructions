@@ -1,7 +1,12 @@
 <div class="quickstart">
   <div class="quickstart__bg">
     <div class="quickstart__container">
-      <h1 id="greeting">Good Morning!</h1>
+      {% assign time = 'now' | date: "%k" | plus: 0 %}
+      {% if time >= 12 %}
+      <h1>Good Afternoon!</h1>
+      {% else %}
+      <h1>Good Morning!</h1>
+      {% endif %}
 
       <div class="step step--active">
         <div class="step__number"><span></span></div>
