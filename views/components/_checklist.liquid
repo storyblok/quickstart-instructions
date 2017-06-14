@@ -32,11 +32,11 @@
             {% if story.content.body == blank %}<button class="btn" data-show="#first-api">Make a Call</button>{% endif %}
           </p>
           <div id="first-api" {% if story.content.body == blank %} class="quickstart--hidden"{% endif %}>
-            <div class="quickstart__t quickstart__t--active">
+            <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
               <pre><code data-pretty data-skip-body="true">{{story|json}}</code></pre>
             </div>
             <p>You can do this API Request with every language you can think of - we made some <a href="https://www.storyblok.com/docs/Delivery-Api/introduction" target="_blank">examples calls</a> for you.</p>
-            <div class="quickstart__t quickstart__t--active">
+            <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
               <pre><code>curl -X GET "https://api.storyblok.com/v1/cdn/stories/home?token=xs8KfuZGvQVOM824AFUQDQtt"</code></pre>
             </div>
           </div>
@@ -60,7 +60,7 @@
           <h2>Good job!</h2>
           <p>You've just changed content and created your first unique content component! Let's see what changed after you've done that. <button class="btn" data-show="#second-api">Run API Call</button></p>
           <div class="quickstart--hidden" id="second-api">
-            <div class="quickstart__t quickstart__t--active">
+            <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
               <pre><code data-pretty data-skip-body="">{{story|json}}</code></pre>
             </div>
             <em>Tip: Add more <a href="https://www.storyblok.com/docs/terminology/field-type" target="_blank">fields with different types</a> to your component and fill it with content.</em>
