@@ -3,6 +3,11 @@ window.onload = () => {
   var currentStoryId = gup('_storyblok', window.location.href)
   var localStorageKey = currentStoryId + 'active-api-steps'
 
+  // set greeting according to time
+  if (new Date().getHours() > 12) {
+    document.querySelector('#greeting').innerHTML = 'Good Afternoon!'
+  }
+
   // pretty print the content jsons - and clear some data
   var toPrettyPrint = document.querySelectorAll('[data-pretty]')
   for (var index = 0, max = toPrettyPrint.length; index < max; index++) {
