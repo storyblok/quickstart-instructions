@@ -1,9 +1,48 @@
 // pretty print on load
 window.onload = () => {
-  var currentStoryId = gup('_storyblok', window.location.href)
-  var localStorageKey = currentStoryId + 'active-api-steps'
+  initPrettyPrint()
+  initActiveStates()
+  initTrackButton()
+  initRequestApiButtons()
+  initStartTourButtons()
+  initShowButton()
+}
 
-  // pretty print the content jsons - and clear some data
+function initTrackButton() {
+  var trackButtons = document.querySelectorAll('[data-track]')
+  for (var index = 0, max = trackButtons.length; index < max; index++) {
+    var trackButton = trackButtons[index];
+    trackButton.addEventListener('click', (event) => {
+      var toTrack = trackButton.getAttribute('data-track')
+      ga('send', 'event', 'Button', toTrack, 'quickstart-v2');
+    })
+  }
+}
+
+function initShowButton() {
+  debugger;
+  var showButtons = document.querySelectorAll('[data-show]')
+  for (var index = 0, max = showButtons.length; index < max; index++) {
+    var showButton = showButtons[index];
+    showButton.addEventListener('click', (event) => {
+      debugger;
+      var toShowId = showButton.getAttribute('data-show')
+      var element = document.querySelector(toShowId)
+      element.classList.remove('quickstart--hidden')
+    })
+  }
+}
+
+function initStartTourButtons() {
+  var startTourButtons = document.querySelector('[data-start-tour]')
+  startTourButtons.addEventListener('click', () => {
+    if (window.storyblok) {
+      window.storyblok.startTour()
+    }
+  })
+}
+
+function initPrettyPrint() {
   var toPrettyPrint = document.querySelectorAll('[data-pretty]')
   for (var index = 0, max = toPrettyPrint.length; index < max; index++) {
     var element = toPrettyPrint[index]
@@ -21,13 +60,16 @@ window.onload = () => {
       element.innerHTML = formatted
     }
   }
+}
 
+function initActiveStates() {
+  var currentStoryId = gup('_storyblok', window.location.href)
+  var localStorageKey = currentStoryId + 'active-api-steps'
 
-  // set api request steps as active if already done.
-  var activeApiSteps = JSON.parse(window.localStorage.getItem('activeApiSteps'))
+  var activeApiSteps = JSON.parse(window.localStorage.getItem(localStorageKey))
   if (!activeApiSteps) {
     activeApiSteps = []
-    window.localStorage.setItem('activeApiSteps', JSON.stringify(activeApiSteps))
+    window.localStorage.setItem(localStorageKey, JSON.stringify(activeApiSteps))
   }
 
   for (var index = 0, max = activeApiSteps.length; index < max; index++) {
@@ -44,9 +86,12 @@ window.onload = () => {
     var actualStep = findAncestor(codeBlock, 'step')
     actualStep.classList.add('step--active')
   }
+}
 
+function initRequestApiButtons() {
+  var currentStoryId = gup('_storyblok', window.location.href)
+  var localStorageKey = currentStoryId + 'active-api-steps'
 
-  // init show api request buttons.
   var requestButtons = document.querySelectorAll('[data-show-step]')
   for (var index = 0, max = requestButtons.length; index < max; index++) {
     var element = requestButtons[index];
@@ -58,11 +103,11 @@ window.onload = () => {
       event.currentTarget.classList.add('quickstart--hidden')
       toShow.classList.remove('quickstart--hidden')
 
-      var stepHistory = JSON.parse(window.localStorage.getItem('activeApiSteps'))
+      var stepHistory = JSON.parse(window.localStorage.getItem(localStorageKey))
 
       if (stepHistory.indexOf(toShowId) == -1) {
         stepHistory.push(toShowId)
-        window.localStorage.setItem('activeApiSteps', JSON.stringify(stepHistory))
+        window.localStorage.setItem(localStorageKey, JSON.stringify(stepHistory))
       }
 
       findAncestor(event.currentTarget, 'step').classList.add('step--active')
@@ -70,34 +115,9 @@ window.onload = () => {
     })
   }
 
-  // init start tour buttons
-  var startTourButtons = document.querySelector('[data-start-tour]')
-  startTourButtons.addEventListener('click', () => {
-    if (window.storyblok) {
-      window.storyblok.startTour()
-    }
-  })
-
-  var showButtons = document.querySelectorAll('[data-show]')
-  for (var index = 0, max = showButtons.length; index < max; index++) {
-    var showButton = showButtons[index];
-    showButton.addEventListener('click', (event) => {
-      var toShowId = showButton.getAttribute('data-show')
-      var element = document.querySelector(toShowId)
-      element.classList.remove('quickstart--hidden')
-    })
-  }
-
-  var trackButtons = document.querySelectorAll('[data-track]')
-  for (var index = 0, max = trackButtons.length; index < max; index++) {
-    var trackButton = trackButtons[index];
-    trackButton.addEventListener('click', (event) => {
-      var toTrack = showButton.getAttribute('data-track')
-      ga('send', 'event', 'Button', toTrack, 'quickstart-v2');
-    })
-  }
-
 }
+
+
 
 // find nearest element with class
 function findAncestor(el, cls) {
@@ -114,7 +134,6 @@ function clearStory(story) {
   delete story.is_startpage
   delete story.group_id
   delete story.parent_id
-  delete story.full_slug
   delete story.content._editable
   return story
 }
