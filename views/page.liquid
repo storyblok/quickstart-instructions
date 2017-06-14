@@ -17,20 +17,17 @@
   <link rel="preload" id="stylesheet" href="{{ 'assets/css/below.css' | asset_url }}" as="style" onload="this.rel='stylesheet'">
 </head>
 <body>
-  {% spaceless %}
-
   {% include 'icon' %}
 
   <main id="main" role="main">
     {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
-    {% include 'checklist' %}
+
+    {% if story.name == 'console' %}
+      {% include 'quickstart' %}
+    {% else %}
+      {% include 'checklist' %}
+    {% endif %}
   </main>
-
-  <footer>
-    <!-- Footer -->
-  </footer>
-
-  {% endspaceless %}
 
   <script type="text/javascript" src="{{ 'assets/js/scripts.js' | asset_url }}"></script>
 
