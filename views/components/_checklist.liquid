@@ -40,7 +40,7 @@
             <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
               <pre><code data-pretty data-skip-body="true">{{story|json}}</code></pre>
             </div>
-            <p>You can do this API Request with every language you can think of - we made some <a href="https://www.storyblok.com/docs/Delivery-Api/introduction" target="_blank">examples calls</a> for you.</p>
+            <p>You can do this API Request with every language you can think of - we made some <a href="https://www.storyblok.com/docs/Delivery-Api/introduction" target="_blank">example calls</a> for you.</p>
             <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
               <pre><code>curl -X GET "https://api.storyblok.com/v1/cdn/stories/{{story.full_slug}}?token=xs8KfuZGvQVOM824AFUQDQtt"</code></pre>
             </div>
@@ -68,7 +68,7 @@
             <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
               <pre><code data-pretty data-skip-body="">{{story|json}}</code></pre>
             </div>
-            <em>Tip: Add more <a href="https://www.storyblok.com/docs/terminology/field-type" target="_blank">fields with different types</a> to your component and fill it with content.</em>
+            <em>Tip: You can add more <a href="https://www.storyblok.com/docs/terminology/field-type" target="_blank">fields with different types</a> to your component and fill it with content.</em>
           </div>
         </div>
       </div>
@@ -79,24 +79,78 @@
           <h2>Time to show</h2>
           <p>
             For maximum flexibility, Storyblok can be integrated into your application or website retrieving content from our API. But for those who want just a basic website, we offer a <a href="https://www.storyblok.com/docs/Rendering-Service/Introduction" target="_blank">rendering service</a> where the whole website is hosted in the cloud.
-            <button data-track="decision: API only">I want the API</button>
-            <button data-track="decision: rendering service">I want the rendering service</button>
-            <button data-show="#not-sure" data-track="decision: not-sure">I'm not sure</button>
-            <table id="not-sure" class="quickstart--hidden">
-              <tr>
-                <th>I want the API</th>
-                <th>I want the rendering service</th>
-              </tr>
-              <tr>
-                <td>Any Templating Engine you want</td>
-                <td>Liquid as Templating Engine</td>
-              </tr>
-              <tr>
-                <td>your decision</td>
-                <td>Local, development and live environment included</td>
-              </tr>
-            </table>
           </p>
+          <div>
+
+            <button class="btn" data-track="decision: API only">API / SDK / Boilerplates</button>
+            <button class="btn"data-track="decision: rendering service">Rendering Service</button>
+
+          </div>
+          <div>
+            <button class="quickstart__button--link" data-show="#not-sure" data-track="decision: not-sure">I'm not sure yet</button>
+            <div id="not-sure" class="quickstart--hidden">
+              <h3>Quick Overview</h3>
+              <table class="quickstart__table">
+                <tr>
+                  <th></th>
+                  <th>API / SDK / Boilerplates</th>
+                  <th>Rendering Service</th>
+                </tr>
+                <tr>
+                  <td>Templating Engine</td>
+                  <td>Any</td>
+                  <td>Liquid</td>
+                </tr>
+                <tr>
+                  <td>Custom Backend Logic</td>
+                  <td>Yes</td>
+                  <td>Liquid Filters</td>
+                </tr>
+                <tr>
+                  <td>Local Environment</td>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>Dev Environment</td>
+                  <td>Own</td>
+                  <td>Included</td>
+                </tr>
+                <tr>
+                  <td>Live Environment</td>
+                  <td>Own</td>
+                  <td>Included</td>
+                </tr>
+                <tr>
+                  <td>Direct Hosting</td>
+                  <td>No</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>Custom Domain</td>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>Storyblok Subdomain</td>
+                  <td>No</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>Included CDN</td>
+                  <td>Images / Assets / API</td>
+                  <td>Everything</td>
+                </tr>
+                <tr>
+                  <td>Pricing</td>
+                  <td>equal</td>
+                  <td>equal</td>
+                </tr>
+              </table>
+              <p>You are still not sure? <button class="quickstart__button--link">Contact us</button> - let's get through this together!</p>
+            </div>
+
+          </div>
         </div>
       </div>
 

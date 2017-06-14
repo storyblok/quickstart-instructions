@@ -230,3 +230,40 @@
   display: none !important;
 }
 
+.quickstart__table {
+  width: 100%;
+  text-align: left;
+  tr:nth-child(even) {
+    background-color: #f2f2f2
+  }
+  th, td {
+    padding: 15px;
+    text-align: left;
+  }
+}
+
+.quickstart__button--link {
+  box-sizing: border-box;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 10px 0px 0px 0px;
+  user-select: none;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #aaa;
+  &:hover {
+    color: #414141;
+  }
+  &:focus {
+    outline: none;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}

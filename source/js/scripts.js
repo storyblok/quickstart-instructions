@@ -25,6 +25,7 @@ function initShowButton() {
     var showButton = showButtons[index];
     showButton.addEventListener('click', (event) => {
       var toShowId = showButton.getAttribute('data-show')
+      showButton.classList.add('quickstart--hidden')
       var element = document.querySelector(toShowId)
       element.classList.remove('quickstart--hidden')
     })
