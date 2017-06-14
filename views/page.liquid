@@ -22,8 +22,8 @@
   {% include 'icon' %}
 
   <main id="main" role="main">
-    {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
     {% include 'checklist' %}
+    {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
   </main>
 
   <footer>

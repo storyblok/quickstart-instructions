@@ -1,5 +1,7 @@
 // pretty print on load
 window.onload = () => {
+  var currentStoryId = gup('_storyblok', window.location.href)
+  var localStorageKey = currentStoryId + 'active-api-steps'
 
   // pretty print the content jsons - and clear some data
   var toPrettyPrint = document.querySelectorAll('[data-pretty]')
@@ -18,7 +20,6 @@ window.onload = () => {
     "component": "root"`)
       element.innerHTML = formatted
     }
-
   }
 
 
@@ -96,4 +97,15 @@ function clearStory(story) {
   delete story.full_slug
   delete story.content._editable
   return story
+}
+
+// get url parameter
+function gup(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
