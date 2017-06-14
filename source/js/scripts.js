@@ -41,7 +41,7 @@ window.onload = () => {
     var codeBlock = document.querySelector(activeStep)
     codeBlock.classList.remove('quickstart--hidden')
 
-    var requestButton = document.querySelector(`[data-show="${activeStep}"]`)
+    var requestButton = document.querySelector(`[data-show-step="${activeStep}"]`)
     if (requestButton) {
       requestButton.classList.add('quickstart--hidden')
     }
@@ -52,13 +52,13 @@ window.onload = () => {
 
 
   // init show api request buttons.
-  var requestButtons = document.querySelectorAll('[data-show]')
+  var requestButtons = document.querySelectorAll('[data-show-step]')
   for (var index = 0, max = requestButtons.length; index < max; index++) {
     var element = requestButtons[index];
 
     element.addEventListener('click', (event) => {
-      var toShowId = event.currentTarget.getAttribute('data-show')
-      var toShow = document.querySelector(event.currentTarget.getAttribute('data-show'))
+      var toShowId = event.currentTarget.getAttribute('data-show-step')
+      var toShow = document.querySelector(event.currentTarget.getAttribute('data-show-step'))
 
       event.currentTarget.classList.add('quickstart--hidden')
       toShow.classList.remove('quickstart--hidden')
@@ -82,6 +82,26 @@ window.onload = () => {
       window.storyblok.startTour()
     }
   })
+
+  var showButtons = document.querySelectorAll('[data-show]')
+  for (var index = 0, max = showButtons.length; index < max; index++) {
+    var showButton = showButtons[index];
+    showButton.addEventListener('click', (event) => {
+      var toShowId = showButton.getAttribute('data-show')
+      var element = document.querySelector(toShowId)
+      element.classList.remove('quickstart--hidden')
+    })
+  }
+
+  var trackButtons = document.querySelectorAll('[data-track]')
+  for (var index = 0, max = trackButtons.length; index < max; index++) {
+    var trackButton = trackButtons[index];
+    trackButton.addEventListener('click', (event) => {
+      var toTrack = showButton.getAttribute('data-track')
+      ga('send', 'event', 'Button', toTrack, 'quickstart-v2');
+    })
+  }
+
 }
 
 // find nearest element with class

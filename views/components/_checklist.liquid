@@ -29,7 +29,7 @@
           <h2>Your first API Request</h2>
           <p>
             It's all about your data - execute this simple GET Request to see the basic structure of the story you're currently editing here.
-            {% if story.content.body == blank %}<button class="btn" data-show="#first-api">Make a Call</button>{% endif %}
+            {% if story.content.body == blank %}<button class="btn" data-show-step="#first-api" data-track="interaction: first-api">Make a Call</button>{% endif %}
           </p>
           <div id="first-api" {% if story.content.body == blank %} class="quickstart--hidden"{% endif %}>
             <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
@@ -50,7 +50,7 @@
           <p>
             You can create and nest your own set of components by simple pressing 'Add Component' - start the tour to get to know more.
           </p>
-          <button class="btn" data-start-tour>Start tour</button>
+          <button class="btn" data-start-tour data-track="interaction: start-tour">Start tour</button>
         </div>
       </div>
 
@@ -58,7 +58,7 @@
         <div class="step__number"><span></span></div>
         <div class="step__text">
           <h2>Good job!</h2>
-          <p>You've just changed content and created your first unique content component! Let's see what changed after you've done that. <button class="btn" data-show="#second-api">Run API Call</button></p>
+          <p>You've just changed content and created your first unique content component! Let's see what changed after you've done that. <button class="btn" data-show-step="#second-api" data-track="interaction: second-api">Run API Call</button></p>
           <div class="quickstart--hidden" id="second-api">
             <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
               <pre><code data-pretty data-skip-body="">{{story|json}}</code></pre>
@@ -74,8 +74,19 @@
           <h2>Time to show</h2>
           <p>
             For maximum flexibility, Storyblok can be integrated into your application or website retrieving content from our API. But for those who want just a basic website, we offer a <a href="https://www.storyblok.com/docs/Rendering-Service/Introduction" target="_blank">rendering service</a> where the whole website is hosted in the cloud.
-            <button>I want to API</button>
-            <button>I want the rendering service</button>
+            <button data-track="decision: API only">I want to API</button>
+            <button data-track="decision: rendering service">I want the rendering service</button>
+            <button data-show="#not-sure" data-track="decision: not-sure">I'm not sure</button>
+            <table id="not-sure" class="quickstart--hidden">
+              <tr>
+                <th>Month</th>
+                <th>Savings</th>
+              </tr>
+              <tr>
+                <td>January</td>
+                <td>$100</td>
+              </tr>
+            </table>
           </p>
         </div>
       </div>
@@ -86,3 +97,14 @@
     </div>
   </div>
 </div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-90566930-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
