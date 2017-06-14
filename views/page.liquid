@@ -20,13 +20,14 @@
   {% include 'icon' %}
 
   <main id="main" role="main">
-    {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
 
     {% if story.name == 'console' %}
       {% include 'quickstart' %}
     {% else %}
       {% include 'checklist' %}
     {% endif %}
+
+    {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
   </main>
 
   <script type="text/javascript" src="{{ 'assets/js/scripts.js' | asset_url }}"></script>
