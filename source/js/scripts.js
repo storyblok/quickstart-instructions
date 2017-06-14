@@ -34,11 +34,11 @@ window.onload = () => {
     var activeStep = activeApiSteps[index];
 
     var codeBlock = document.querySelector(activeStep)
-    codeBlock.classList.remove('u-hidden')
+    codeBlock.classList.remove('quickstart--hidden')
 
     var requestButton = document.querySelector(`[data-show="${activeStep}"]`)
     if (requestButton) {
-      requestButton.classList.add('u-hidden')
+      requestButton.classList.add('quickstart--hidden')
     }
 
     var actualStep = findAncestor(codeBlock, 'step')
@@ -55,8 +55,8 @@ window.onload = () => {
       var toShowId = event.currentTarget.getAttribute('data-show')
       var toShow = document.querySelector(event.currentTarget.getAttribute('data-show'))
 
-      event.currentTarget.classList.add('u-hidden')
-      toShow.classList.remove('u-hidden')
+      event.currentTarget.classList.add('quickstart--hidden')
+      toShow.classList.remove('quickstart--hidden')
 
       var stepHistory = JSON.parse(window.localStorage.getItem('activeApiSteps'))
 

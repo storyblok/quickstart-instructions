@@ -31,7 +31,7 @@
             It's all about your data - execute this simple GET Request to see the basic structure of the story you're currently editing here.
             {% if story.content.body == blank %}<button class="btn" data-show="#first-api">Make a Call</button>{% endif %}
           </p>
-          <div id="first-api" {% if story.content.body == blank %} class="u-hidden"{% endif %}>
+          <div id="first-api" {% if story.content.body == blank %} class="quickstart--hidden"{% endif %}>
             <div class="quickstart__t quickstart__t--active">
               <pre><code data-pretty data-skip-body="true">{{story|json}}</code></pre>
             </div>
@@ -59,10 +59,12 @@
         <div class="step__text">
           <h2>Good job!</h2>
           <p>You've just changed content and created your first unique content component! Let's see what changed after you've done that. <button class="btn" data-show="#second-api">Run API Call</button></p>
-          <div class="quickstart__t quickstart__t--active u-hidden" id="second-api">
-            <pre><code data-pretty data-skip-body="">{{story|json}}</code></pre>
+          <div class="quickstart--hidden" id="second-api">
+            <div class="quickstart__t quickstart__t--active">
+              <pre><code data-pretty data-skip-body="">{{story|json}}</code></pre>
+            </div>
+            <em>Tip: Add more <a href="https://www.storyblok.com/docs/terminology/field-type" target="_blank">fields with different types</a> to your component and fill it with content.</em>
           </div>
-          <em>Tip: Add more <a href="https://www.storyblok.com/docs/terminology/field-type" target="_blank">fields with different types</a> to your component and fill it with content.</em>
         </div>
       </div>
 
