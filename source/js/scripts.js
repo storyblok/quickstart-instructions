@@ -20,12 +20,10 @@ function initTrackButton() {
 }
 
 function initShowButton() {
-  debugger;
   var showButtons = document.querySelectorAll('[data-show]')
   for (var index = 0, max = showButtons.length; index < max; index++) {
     var showButton = showButtons[index];
     showButton.addEventListener('click', (event) => {
-      debugger;
       var toShowId = showButton.getAttribute('data-show')
       var element = document.querySelector(toShowId)
       element.classList.remove('quickstart--hidden')
@@ -111,23 +109,16 @@ function initRequestApiButtons() {
       }
 
       findAncestor(event.currentTarget, 'step').classList.add('step--active')
-
     })
   }
-
 }
 
-
-
-// find nearest element with class
 function findAncestor(el, cls) {
   while ((el = el.parentElement) && !el.classList.contains(cls));
   return el;
 }
 
-// clear story data for simplicity
 function clearStory(story) {
-  // provide clear data
   delete story.alternates
   delete story.tag_list
   delete story.sort_by_date
@@ -138,13 +129,12 @@ function clearStory(story) {
   return story
 }
 
-// get url parameter
 function gup(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
