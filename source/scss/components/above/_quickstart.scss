@@ -11,6 +11,10 @@
     margin: 0 0 6px 0;
     font-size: 1.4rem;
   }
+
+  h3 {
+    margin-bottom: 0px;
+  }
 }
 
 .quickstart__btn {
@@ -269,4 +273,21 @@
 
 .quickstart__text--center {
   text-align: center;
+}
+
+
+.quickstart--rendering-service {
+  display:none;
+}
+
+.quickstart__teaser + .quickstart--rendering-service {
+  display: block;
+}
+
+#rendering-service {
+  display: none;
+}
+
+.quickstart--show {
+  display: block !important;
 }

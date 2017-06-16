@@ -34,15 +34,16 @@
           <h2>Your first API Request</h2>
           <p>
             It's all about your data - execute this simple GET Request to see the basic structure of the story you're currently editing here.
-            {% if story.content.body == blank %}<button class="btn" data-show-step="#first-api" data-track="interaction: first-api">Make a Call</button>{% endif %}
+            {% if story.content.body == blank %}<button class="btn" data-first-api data-track="interaction: first-api">Make a Call</button>{% endif %}
           </p>
           <div id="first-api" {% if story.content.body == blank %} class="quickstart--hidden"{% endif %}>
+            <h3>There you go:</h3>
             <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
               <pre><code data-pretty data-skip-body="true">{{story|json}}</code></pre>
             </div>
             <p>You can do this API Request with every language you can think of - we made some <a href="https://www.storyblok.com/docs/Delivery-Api/introduction" target="_blank">example calls</a> for you.</p>
             <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-              <pre><code>curl -X GET "https://api.storyblok.com/v1/cdn/stories/{{story.full_slug}}?token=xs8KfuZGvQVOM824AFUQDQtt"</code></pre>
+              <pre><code>curl -X GET "https://api.storyblok.com/v1/cdn/stories/{{story.full_slug}}?token={{private_token}}"</code></pre>
             </div>
           </div>
         </div>
@@ -59,11 +60,11 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step {% if proxy_mode %}step--active{% endif %}">
         <div class="step__number"><span></span></div>
         <div class="step__text">
           <h2>Good job!</h2>
-          <p>You've just changed content and created your first unique content component! Let's see what changed after you've done that. <button class="btn" data-show-step="#second-api" data-track="interaction: second-api">Run API Call</button></p>
+          <p>You've just changed content and created your first unique content component! Let's see what changed after you've done that. <button class="btn" data-second-api data-track="interaction: second-api">Run API Call</button></p>
           <div class="quickstart--hidden" id="second-api">
             <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
               <pre><code data-pretty data-skip-body="">{{story|json}}</code></pre>
@@ -73,7 +74,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step {% if proxy_mode %}step--active{% endif %}">
         <div class="step__number"><span></span></div>
         <div class="step__text">
           <h2>Time to show</h2>
@@ -83,7 +84,7 @@
           <div>
 
             <button class="btn" data-track="decision: API only">API / SDK / Boilerplates</button>
-            <button class="btn"data-track="decision: rendering service">Rendering Service</button>
+            <button class="btn" data-rendering-service data-track="decision: rendering service">Rendering Service</button>
 
           </div>
           <div>
@@ -145,13 +146,110 @@
                   <td class="quickstart__text--center" colspan="2">included</td>
                 </tr>
               </table>
-              <p>You are still not sure? <button class="quickstart__button--link">Contact us</button> - let's get through this together!</p>
+              <p>You are still not sure? <button data-trigger-livechat class="quickstart__button--link">Contact us</button> - let's get through this together!</p>
             </div>
 
           </div>
         </div>
       </div>
 
+      <div id="rendering-service" {% if proxy_mode %}class="quickstart--show"{% endif %}>
+      <div class="step  {% if proxy_mode %} step--active {% endif %}">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>Fire up your local environment.</h2>
+          <p>
+            With the quickstart you've already got all you need to start.
+            In the folder you've started to quickstart execute following commands:
+          </p>
+          <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
+            <pre><code>npm install && gulp</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="step step--teaser-creation">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>Let's create your first presentation of a component</h2>
+          <p>
+            You've already created a component in Storyblok - so all what's left to do
+            is to create a presentation for that data. So let's create a `_teaser.liquid`
+            in your `/views/components/` folder.
+          </p>
+          <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
+            <pre><code>{% raw %}&lt;div class=&quot;quickstart__teaser&quot;&gt;
+  &lt;!--
+  The _editable attribute makes the next
+  DOM-element clickable so the sidebar can
+  show the right component.
+  --&gt;
+  {{ blok._editable }}
+  &lt;div class=&quot;quickstart__inner-teaser&quot;&gt;
+    &lt;svg class=&quot;icon&quot;&gt;&lt;use xlink:href=&quot;#icon-congrats&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    &lt;h2&gt;
+      &lt;!--
+      You can access every attribute you
+      define in the schema in the blok variable
+      --&gt;
+      {% if blok.headline == blank %}
+        Congrats, you have inserted a teaser to the page!
+      {% else %}
+        {{ blok.headline }}
+      {% endif %}
+      &lt;/h2&gt;
+      &lt;h3&gt;
+        Open &lt;code&gt;views/components/_teaser.liquid&lt;/code&gt; to study the code.
+        &lt;!-- HINT: Try to change something and the browser window in Storyblok will automatically refresh. --&gt;
+    &lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/div&gt;{% endraw %}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
+
+      <div class="step step--liquid-teaser">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>Great job!</h2>
+          <p>
+            Let me just summaries what you just did:
+            <ul>
+              <li>Created a space</li>
+              <li>Created a story</li>
+              <li>Created a component with a schema in Storyblok</li>
+              <li>Started a local development environment on your machine</li>
+              <li>Created the presentation layer for your component</li>
+            </ul>
+            You can now start creating your own components with their individual schemas and their own presentation layers.
+            <button class="btn" data-rendering-service-got-it data-track="interaction: got-it">Got it!</button>
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2>You are ready!</h2>
+          <p>
+            Simply remove the <code>{% raw %}{% include 'quickstart' %}{% endraw %}</code> from your <code>/views/page.liquid</code> and you're ready to start with your own project.
+            You can checkout the README.md for more information about this basic setup. Have fun!
+          </p>
+          <h3><button class="quickstart__button--link" data-trigger-livechat data-track="interaction: more-information">You need more help? Ask us right away!</button></h3>
+          <h3>Nice to read:</h3>
+          <ul>
+            <li><a href="https://www.storyblok.com/tp/component-thinking-improves-productivity">How thinking in components can increase your productivity</a></li>
+            <li><a href="https://www.storyblok.com/tp/coupled-decoupled-and-headless-content-management-systems">Coupled, Decoupled and Headless Content Management Systems</a></li>
+            <li><a href="https://www.storyblok.com/tp/how-to-get-pagespeed-100">How we optimized an existing website from pagespeed 59 to 100</a></li>
+          </ul>
+
+        </div>
+      </div>
+
+
+      </div>
     </div>
   </div>
 </div>

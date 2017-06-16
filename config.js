@@ -9,7 +9,6 @@ module.exports = {
     apiKey: require('./token'),
     basePath: 'views',
     quickstartToken: '',
-    environment: 'live',
-    enableQuickstartTour: true
+    environment: 'live'
   }
 }

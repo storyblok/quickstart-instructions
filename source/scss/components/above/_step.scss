@@ -61,3 +61,15 @@
 .step + .step {
   opacity: 0.4;
 }
+
+.step.step--active {
+  opacity: 1;
+}
+
+
+.quickstart__teaser--hidden {
+  display:none;
+  & + .step {
+    opacity: 0.4;
+  }
+}
