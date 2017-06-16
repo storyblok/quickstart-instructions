@@ -11,20 +11,13 @@
       <div class="step step--active">
         <div class="step__number"><span></span></div>
         <div class="step__text">
-          <h2>Create a space</h2>
+          <h2>Create a space and a story</h2>
           <p>
-            A space is a place where you keep all the content related to a single project.
+            A space is a place where you keep all the content related to a single project. A story is a <strong>content entry</strong> which contains one or a collection of components.
           </p>
         </div>
-      </div>
-
-      <div class="step step--active">
-        <div class="step__number"><span></span></div>
-        <div class="step__text">
-          <h2>Create a story</h2>
-          <p>
-            A story is a <strong>content entry</strong> which contains one or a collection of components.
-          </p>
+        <div class="step__last">
+          <img src="//a.storyblok.com/f/40479/7a07f54a99/space.svg">
         </div>
       </div>
 
@@ -33,7 +26,7 @@
         <div class="step__text">
           <h2>Your first API Request</h2>
           <p>
-            It's all about your data - execute this simple GET Request to see the basic structure of the story you're currently editing here.
+            Storyblok is an API based CMS for Components - so it's all about your data - execute a simple GET Request to see the basic structure of the story you're actually editing here.
             {% if story.content.body == blank %}<button class="btn" data-first-api data-track="interaction: first-api">Make a Call</button>{% endif %}
           </p>
           <div id="first-api" {% if story.content.body == blank %} class="quickstart--hidden"{% endif %}>
@@ -43,7 +36,7 @@
             </div>
             <p>You can do this API Request with every language you can think of - we made some <a href="https://www.storyblok.com/docs/Delivery-Api/introduction" target="_blank">example calls</a> for you.</p>
             <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-              <pre><code>curl -X GET "https://api.storyblok.com/v1/cdn/stories/{{story.full_slug}}?token={{private_token}}"</code></pre>
+              <pre><code>curl -X GET "https://api.storyblok.com/v1/cdn/stories/{{story.full_slug}}?token={{private_token}}&version=draft"</code></pre>
             </div>
           </div>
         </div>
@@ -54,9 +47,12 @@
         <div class="step__text">
           <h2>Create your first component and define its structure</h2>
           <p>
-            You can create and nest your own set of components by simple pressing 'Add Component' - start the tour to get to know more.
+            Let's create a <strong>teaser component</strong> <i>together</i> - press <strong>start tour</strong>.
           </p>
           <button class="btn" data-start-tour data-track="interaction: start-tour">Start tour</button>
+        </div>
+        <div class="step__last">
+          <img src="//a.storyblok.com/f/40479/9de132979f/story.svg">
         </div>
       </div>
 
@@ -64,7 +60,7 @@
         <div class="step__number"><span></span></div>
         <div class="step__text">
           <h2>Good job!</h2>
-          <p>You've just changed content and created your first unique content component! Let's see what changed after you've done that. <button class="btn" data-second-api data-track="interaction: second-api">Run API Call</button></p>
+          <p>You've just changed content and created your first unique content component! Let's have a look at what has changed after you've done that. <button class="btn" data-second-api data-track="interaction: second-api">Run API Call</button></p>
           <div class="quickstart--hidden" id="second-api">
             <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
               <pre><code data-pretty data-skip-body="">{{story|json}}</code></pre>
@@ -83,7 +79,7 @@
           </p>
           <div>
 
-            <button class="btn" data-track="decision: API only">API / SDK / Boilerplates</button>
+            <button class="btn" data-api-sdk-boilerplates data-track="decision: API only">API / SDK / Boilerplates</button>
             <button class="btn" data-rendering-service data-track="decision: rendering service">Rendering Service</button>
 
           </div>
@@ -153,32 +149,203 @@
         </div>
       </div>
 
-      <div id="rendering-service" {% if proxy_mode %}class="quickstart--show"{% endif %}>
-      <div class="step  {% if proxy_mode %} step--active {% endif %}">
+      <div id="api-sdk-boilerplates">
+        <h1>API / SDK / Boilerplates</h1>
+        <div class="step">
         <div class="step__number"><span></span></div>
-        <div class="step__text">
-          <h2>Fire up your local environment.</h2>
-          <p>
-            With the quickstart you've already got all you need to start.
-            In the folder you've started to quickstart execute following commands:
-          </p>
-          <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-            <pre><code>npm install && gulp</code></pre>
+        <div class="step__text step--choose-tech">
+          <h2>Fetch and render the content</h2>
+
+          <p>You can choose the Storyblok hosted rendering service or call the API from your favourite language to get the created content.</p>
+
+          <div class="quickstart__langc">
+
+            <a class="quickstart__lang quickstart__lang--active" data-lang="javascript">
+              <img src="https://a.storyblok.com/f/40479/9a6bef0cd2/javascript.svg" height="33">
+              <span>JavaScript</span>
+            </a>
+            <a class="quickstart__lang" data-lang="nodejs">
+              <img src="https://a.storyblok.com/f/40479/600c85c25b/node.svg" height="33">
+              <span>Node.js</span>
+            </a>
+            <a class="quickstart__lang" data-lang="ruby">
+              <img src="https://a.storyblok.com/f/40479/5b972f6821/ruby.svg" height="33">
+              <span>Ruby</span>
+            </a>
+            <a class="quickstart__lang" data-lang="php">
+              <img src="https://a.storyblok.com/f/40479/dac5c0bb11/php.svg" height="33">
+              <span>PHP</span>
+            </a>
+            <a class="quickstart__lang" data-lang="python">
+              <img src="https://a.storyblok.com/f/40479/71495561c6/python.svg" height="33">
+              <span>Python</span>
+            </a>
+            <a class="quickstart__lang" data-lang="storyblok">
+              <img src="https://a.storyblok.com/f/40479/52dd4927ef/storyblok_circle.svg" height="33">
+              <span>Storyblok</span>
+            </a>
           </div>
+
+
+
+          <div class="quickstart__t quickstart__t--active" data-tab="javascript">
+            <pre><code>&lt;script src="//app.storyblok.com/f/storyblok-latest.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  storyblok.init({
+    accessToken: '{{private_token}}' <span>// Your private token</span>
+  }){%- raw -%}
+
+  <span>&lt;!-- Get the content of the current page --&gt;</span>
+  storyblok.get({slug: 'home', version: 'draft'}, function(data) {
+    console.log(data.story)
+  })
+
+  <span>&lt;!-- Get multiple content entries from a folder called "news" --&gt;</span>
+  storyblok.getAll({starts_with: 'story', version: 'draft'}, function(data) {
+    console.log(data.stories)
+  })
+&lt;/script&gt;{% endraw %}
+
+<span># More on <a target="_blank" href="https://www.storyblok.com/tp/add-a-headless-CMS-to-vuejs-in-5-minutes">our Blog</a></span></code></pre>
+          </div>
+
+          <div class="quickstart__t" data-tab="nodejs">
+            <pre><code>var StoryblokClient = require('storyblok-node-client');
+
+var Storyblok = new StoryblokClient({
+  privateToken: '{{private_token}}' <span>// Your private token</span>
+});
+{%- raw -%}
+<span>// Get the content of the current page</span>
+Storyblok
+  .get('stories/home', {
+    version: 'draft'
+  })
+  .then((response) => {
+    console.log(response);
+  });
+
+<span>// Get multiple content entries from a folder called "news"</span>
+Storyblok
+  .get('stories', {
+    starts_with: 'news'
+    version: 'draft'
+  })
+  .then((response) => {
+    console.log(response);
+  });
+{% endraw %}
+
+<span># More on <a target="_blank" href="https://github.com/storyblok/storyblok-node-client">Github</a></span></code></pre>
+          </div>
+
+          <div class="quickstart__t" data-tab="ruby">
+            <pre><code>client = new Storyblok::Client(token: '{{private_token}}') <span># Your private token</span>
+{%- raw -%}
+<span># Get the content of the current page</span>
+p client.story('home')
+
+<span># Get multiple content entries from a folder called "news"</span>
+p client.stories({
+  :starts_with => 'news'
+})
+
+<span># More on <a target="_blank" href="https://github.com/storyblok/storyblok-ruby">Github</a></span>{% endraw %}</code></pre>
+          </div>
+
+
+          <div class="quickstart__t" data-tab="php">
+            <pre><code>require 'vendor/autoload.php';
+
+$client = new \Storyblok\Client('{{private_token}}'); <span>// Your private token</span>{%- raw -%}
+
+<span>// Get the content of the current page</span>
+$client->getStoryBySlug('home');
+$data = $client->getBody();
+
+<span>// Get multiple content entries from a folder called "news"</span>
+$client->getStories(
+  array(
+    'starts_with' => 'news'
+  )
+);
+$data = $client->getStoryContent();{% endraw %}
+
+<span># More on <a target="_blank" href="https://github.com/storyblok/php-client">Github</a></span></code></pre>
+          </div>
+
+          <div class="quickstart__t" data-tab="python">
+            <pre><code>import http.client
+
+conn = http.client.HTTPSConnection("api.storyblok.com")
+
+<span>// Get the content of the current page</span>
+conn.request("GET", "/v1/cdn/stories/home?token={{private_token}}") <span>// Your private token</span>{%- raw -%}
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8")){% endraw %}</code></pre>
+          </div>
+          <div class="quickstart__t" data-tab="storyblok">
+            <pre><code>{%- raw -%}<span># Get the content of the current page</span>
+{{ story.content }}
+
+<span># Get multiple content entries from a folder called "news"</span>
+{% set newsitems from stories starts_with:'news', per_page: 3 %}
+{% for news in newsitems.data %}
+    {{ news }}
+{% endfor %}
+
+<span># Open the file views/page.liquid and try it out</span>
+<span># More on <a target="_blank" href="https://www.storyblok.com/docs/Rendering-Service/Theme-Documentation">theme documentation</a></span>
+{% endraw %}</code></pre>
+          </div>
+          <br>
+          <div class="quickstart__text--center">
+            <button class="btn" data-api-sdk-boilerplates-got-it data-track="interaction: api-sdk-boilerplates-got-it">I got it!</button><br>
+            <button class="quickstart__button--link" data-trigger-livechat data-track="interaction: api-sdk-boilerplates-more-information">You got some questions?</button>
+          </div>
+          <h3>Nice to read:</h3>
+          <ul>
+            <li><a target="_blank" href="https://www.storyblok.com/tp/component-thinking-improves-productivity">How thinking in components can increase your productivity</a></li>
+            <li><a target="_blank" href="https://www.storyblok.com/tp/coupled-decoupled-and-headless-content-management-systems">Coupled, Decoupled and Headless Content Management Systems</a></li>
+            <li><a target="_blank" href="https://www.storyblok.com/tp/node-js-cms">Add a headless CMS to Node.js using Express as server.</a></li>
+            <li><a target="_blank" href="https://www.storyblok.com/tp/add-a-headless-cms-to-laravel-in-5-minutes">Add a headless CMS to Laravel in 5 minutes</a></li>
+            <li><a target="_blank" href="https://www.storyblok.com/tp/add-a-headless-CMS-to-vuejs-in-5-minutes">Add a headless CMS to VueJs in 5 minutes</a></li>
+            <li><a target="_blank" href="https://www.storyblok.com/tp/add-a-headless-cms-to-python-django-in-5-minutes">Add a headless CMS to Python/Django in 5 minutes</a></li>
+          </ul>
         </div>
       </div>
+      </div>
 
-      <div class="step step--teaser-creation">
-        <div class="step__number"><span></span></div>
-        <div class="step__text">
-          <h2>Let's create your first presentation of a component</h2>
-          <p>
-            You've already created a component in Storyblok - so all what's left to do
-            is to create a presentation for that data. So let's create a `_teaser.liquid`
-            in your `/views/components/` folder.
-          </p>
-          <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-            <pre><code>{% raw %}&lt;div class=&quot;quickstart__teaser&quot;&gt;
+      <div id="rendering-service" {% if proxy_mode %}class="quickstart--show"{% endif %}>
+          <h1>Rendering Service</h1>
+          <div class="step  {% if proxy_mode %} step--active {% endif %}">
+            <div class="step__number"><span></span></div>
+            <div class="step__text">
+              <h2>Fire up your local environment.</h2>
+              <p>
+                With the quickstart you've already got all you need to start.
+                In the folder you've started to quickstart execute following commands:
+              </p>
+              <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
+                <pre><code>npm install && gulp</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="step step--teaser-creation">
+            <div class="step__number"><span></span></div>
+            <div class="step__text">
+              <h2>Let's create your first presentation of a component</h2>
+              <p>
+                You've already created a component in Storyblok - so all what's left to do
+                is to create a presentation for that data. So let's create a `_teaser.liquid`
+                in your `/views/components/` folder.
+              </p>
+              <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
+                <pre><code>{% raw %}&lt;div class=&quot;quickstart__teaser&quot;&gt;
   &lt;!--
   The _editable attribute makes the next
   DOM-element clickable so the sidebar can
@@ -204,49 +371,49 @@
     &lt;/h3&gt;
   &lt;/div&gt;
 &lt;/div&gt;{% endraw %}</code></pre>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
+          {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
 
-      <div class="step step--liquid-teaser">
-        <div class="step__number"><span></span></div>
-        <div class="step__text">
-          <h2>Great job!</h2>
-          <p>
-            Let me just summaries what you just did:
-            <ul>
-              <li>Created a space</li>
-              <li>Created a story</li>
-              <li>Created a component with a schema in Storyblok</li>
-              <li>Started a local development environment on your machine</li>
-              <li>Created the presentation layer for your component</li>
-            </ul>
-            You can now start creating your own components with their individual schemas and their own presentation layers.
-            <button class="btn" data-rendering-service-got-it data-track="interaction: got-it">Got it!</button>
-          </p>
-        </div>
-      </div>
+          <div class="step step--liquid-teaser">
+            <div class="step__number"><span></span></div>
+            <div class="step__text">
+              <h2>Great job!</h2>
+              <p>
+                Let me just summaries what you just did:
+                <ul>
+                  <li>Created a space</li>
+                  <li>Created a story</li>
+                  <li>Created a component with a schema in Storyblok</li>
+                  <li>Started a local development environment on your machine</li>
+                  <li>Created the presentation layer for your component</li>
+                </ul>
+                You can now start creating your own components with their individual schemas and their own presentation layers.
+                <button class="btn" data-rendering-service-got-it data-track="interaction: rendering-service-got-it">Got it!</button>
+              </p>
+            </div>
+          </div>
 
-      <div class="step">
-        <div class="step__number"><span></span></div>
-        <div class="step__text">
-          <h2>You are ready!</h2>
-          <p>
-            Simply remove the <code>{% raw %}{% include 'quickstart' %}{% endraw %}</code> from your <code>/views/page.liquid</code> and you're ready to start with your own project.
-            You can checkout the README.md for more information about this basic setup. Have fun!
-          </p>
-          <h3><button class="quickstart__button--link" data-trigger-livechat data-track="interaction: more-information">You need more help? Ask us right away!</button></h3>
-          <h3>Nice to read:</h3>
-          <ul>
-            <li><a href="https://www.storyblok.com/tp/component-thinking-improves-productivity">How thinking in components can increase your productivity</a></li>
-            <li><a href="https://www.storyblok.com/tp/coupled-decoupled-and-headless-content-management-systems">Coupled, Decoupled and Headless Content Management Systems</a></li>
-            <li><a href="https://www.storyblok.com/tp/how-to-get-pagespeed-100">How we optimized an existing website from pagespeed 59 to 100</a></li>
-          </ul>
+          <div class="step">
+            <div class="step__number"><span></span></div>
+            <div class="step__text">
+              <h2>You are ready!</h2>
+              <p>
+                Simply remove the <code>{% raw %}{% include 'quickstart' %}{% endraw %}</code> from your <code>/views/page.liquid</code> and you're ready to start with your own project.
+                You can checkout the README.md for more information about this basic setup. Have fun!
+              </p>
+              <h3><button class="quickstart__button--link" data-trigger-livechat data-track="interaction: rendering-service-more-information">You need more help? Ask us right away!</button></h3>
+              <h3>Nice to read:</h3>
+              <ul>
+                <li><a target="_blank" href="https://www.storyblok.com/tp/component-thinking-improves-productivity">How thinking in components can increase your productivity</a></li>
+                <li><a target="_blank" href="https://www.storyblok.com/tp/coupled-decoupled-and-headless-content-management-systems">Coupled, Decoupled and Headless Content Management Systems</a></li>
+                <li><a target="_blank" href="https://www.storyblok.com/tp/how-to-get-pagespeed-100">How to optimize your website to a Pagespeed of 100</a></li>
+              </ul>
 
-        </div>
-      </div>
+            </div>
+          </div>
 
 
       </div>

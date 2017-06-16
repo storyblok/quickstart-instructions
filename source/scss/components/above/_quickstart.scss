@@ -284,10 +284,15 @@
   display: block;
 }
 
-#rendering-service {
+#rendering-service, #api-sdk-boilerplates {
+  padding-top: 20px;
   display: none;
 }
 
 .quickstart--show {
   display: block !important;
+}
+
+.quickstart__text--center {
+  text-align: center;
 }

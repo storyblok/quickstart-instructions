@@ -1,16 +1,23 @@
 // pretty print on load
 window.onload = () => {
+  window.window.currentStory = gup('_storyblok', window.location.href) + '-'
   initPrettyPrint()
   initTrackButton()
   initStartTourButtons()
+  initLiveChat()
   initShowButton()
 
   initFirstAPICall()
   initSecondAPICall()
+
+
   initRenderingService()
   initTeaserState()
   initRenderingServiceGotIt()
-  initLiveChat()
+
+  initApiSdkBoilerplates()
+  initAPIHowtos()
+  initApiSdkBoilerplateGotIt()
 
   checkSteps()
 }
@@ -68,7 +75,7 @@ function initFirstAPICall() {
   var button = document.querySelector('[data-first-api]')
   if (button) {
     button.addEventListener('click', () => {
-      localStorage.setItem('step-first-api', 'true');
+      localStorage.setItem(window.currentStory + 'step-first-api', 'true');
       doFirstAPICall()
     })
   }
@@ -89,7 +96,7 @@ function initSecondAPICall() {
   var button = document.querySelector('[data-second-api]')
   if (button) {
     button.addEventListener('click', () => {
-      localStorage.setItem('step-second-api', 'true');
+      localStorage.setItem(window.currentStory + 'step-second-api', 'true');
       doSecondAPICall()
     })
   }
@@ -110,7 +117,8 @@ function initRenderingService() {
   var button = document.querySelector('[data-rendering-service]')
   if (!!button) {
     button.addEventListener('click', () => {
-      localStorage.setItem('step-rendering-service', 'true');
+      localStorage.setItem(window.currentStory + 'step-rendering-service', 'true');
+      localStorage.setItem(window.currentStory + 'step-api-sdk-boilerplates', 'false');
       doRenderingService()
     })
   }
@@ -119,7 +127,29 @@ function doRenderingService() {
   var toShow = document.querySelector('#rendering-service')
   if (!!toShow) {
     toShow.classList.add('quickstart--show')
+    document.querySelector('#api-sdk-boilerplates').classList.remove('quickstart--show')
+
     var step = findAncestor(document.querySelector('[data-rendering-service]'), 'step')
+    step.classList.add('step--active')
+  }
+}
+
+function initApiSdkBoilerplates() {
+  var button = document.querySelector('[data-api-sdk-boilerplates]')
+  if (!!button) {
+    button.addEventListener('click', () => {
+      localStorage.setItem(window.currentStory + 'step-rendering-service', 'false');
+      localStorage.setItem(window.currentStory + 'step-api-sdk-boilerplates', 'true');
+      doApiSdkBoilerplates()
+    })
+  }
+}
+function doApiSdkBoilerplates() {
+  var toShow = document.querySelector('#api-sdk-boilerplates')
+  if (!!toShow) {
+    toShow.classList.add('quickstart--show')
+    document.querySelector('#rendering-service').classList.remove('quickstart--show')
+    var step = findAncestor(document.querySelector('[data-api-sdk-boilerplates]'), 'step')
     step.classList.add('step--active')
   }
 }
@@ -135,7 +165,7 @@ function initRenderingServiceGotIt() {
   var button = document.querySelector('[data-rendering-service-got-it]')
   if (!!button) {
     button.addEventListener('click', () => {
-      localStorage.setItem('step-rendering-service-got-it', 'true');
+      localStorage.setItem(window.currentStory + 'step-rendering-service-got-it', 'true');
       doRenderingServiceGotIt()
     })
   }
@@ -145,20 +175,65 @@ function doRenderingServiceGotIt() {
   step.classList.add('step--active')
 }
 
-function checkSteps() {
-  if (localStorage.getItem('step-first-api') == 'true') {
-    doFirstAPICall()
-  }
-  if (localStorage.getItem('step-second-api') == 'true') {
-    doSecondAPICall()
-  }
-  if (localStorage.getItem('step-rendering-service') == 'true') {
-    doRenderingService()
-  }
-  if (localStorage.getItem('step-rendering-service-got-it') == 'true') {
-    doRenderingServiceGotIt()
+function initApiSdkBoilerplateGotIt() {
+  var button = document.querySelector('[data-api-sdk-boilerplates-got-it]')
+  if (!!button) {
+    button.addEventListener('click', () => {
+      localStorage.setItem(window.currentStory + 'step-api-sdk-boilerplates-got-it', 'true');
+      doApiSdkBoilerplateGotIt()
+    })
   }
 }
+function doApiSdkBoilerplateGotIt() {
+  var step = findAncestor(document.querySelector('[data-api-sdk-boilerplates-got-it]'), 'step')
+  step.classList.add('step--active')
+}
+
+
+
+
+function checkSteps() {
+  if (localStorage.getItem(window.currentStory + 'step-first-api') == 'true') {
+    doFirstAPICall()
+  }
+  if (localStorage.getItem(window.currentStory + 'step-second-api') == 'true') {
+    doSecondAPICall()
+  }
+  if (localStorage.getItem(window.currentStory + 'step-rendering-service') == 'true') {
+    doRenderingService()
+  }
+  if (localStorage.getItem(window.currentStory + 'step-rendering-service-got-it') == 'true') {
+    doRenderingServiceGotIt()
+  }
+  if (localStorage.getItem(window.currentStory + 'step-api-sdk-boilerplates') == 'true') {
+    doApiSdkBoilerplates()
+  }
+  if (localStorage.getItem(window.currentStory + 'step-api-sdk-boilerplates-got-it') == 'true') {
+    doApiSdkBoilerplateGotIt()
+  }
+}
+
+function initAPIHowtos() {
+  var qs = document.querySelectorAll('.quickstart__lang')
+  var ct = document.querySelector('.step--choose-tech')
+  for (var i = 0; i < qs.length; i++) {
+    qs[i].addEventListener('click', function() {
+      var qtabs = ct.querySelectorAll('.quickstart__t')
+      for (var j = 0; j < qtabs.length; j++) {
+        qtabs[j].style.display = 'none'
+      }
+
+      for (var x = 0; x < qs.length; x++) {
+        qs[x].classList = 'quickstart__lang'
+      }
+
+      this.classList = 'quickstart__lang quickstart__lang--active'
+      document.querySelector('[data-tab='+this.getAttribute('data-lang')+']').style.display = 'block'
+    })
+  }
+}
+
+
 
 function initPrettyPrint() {
   var toPrettyPrint = document.querySelectorAll('[data-pretty]')
