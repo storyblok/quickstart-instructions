@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Site - {{ story.name }}</title>
 
-  {%- include 'advanced_meta_tags' -%}
-
   {% if proxy_mode %}
     <link href="{{ 'assets/css/above.css' | asset_url }}" rel="stylesheet">
   {% else %}
@@ -17,15 +15,10 @@
   <link rel="preload" id="stylesheet" href="{{ 'assets/css/below.css' | asset_url }}" as="style" onload="this.rel='stylesheet'">
 </head>
 <body>
-  {% include 'icon' %}
 
   <main id="main" role="main">
 
-    {% if story.name == 'console' %}
-      {% include 'quickstart' %}
-    {% else %}
-      {% include 'checklist' %}
-    {% endif %}
+   {% include 'quickstart' %}
 
     {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
   </main>
