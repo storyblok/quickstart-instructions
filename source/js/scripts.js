@@ -38,6 +38,17 @@ function initShowButton() {
   }
 }
 
+function initLiveChat() {
+  var button = document.querySelector('[data-trigger-livechat]')
+  if (button) {
+    button.addEventListener('click', () => {
+      if (window.storyblok) {
+        window.storyblok.openLiveChat()
+      }
+    })
+  }
+}
+
 function initStartTourButtons() {
   var startTourButtons = document.querySelector('[data-start-tour]')
   if (startTourButtons) {
@@ -129,7 +140,6 @@ function doRenderingServiceGotIt() {
   var step = findAncestor(document.querySelector('[data-rendering-service-got-it]'), 'step')
   step.classList.add('step--active')
 }
-
 
 function checkSteps() {
   if (localStorage.getItem('step-first-api') == 'true') {

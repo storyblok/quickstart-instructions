@@ -82,7 +82,7 @@ gulp.task('browsersync', function () {
     port: 4440,
     serveStatic: ['./views'],
     proxy: {
-      target: 'https://' + config.blok.domain + '/',
+      target: 'http://' + config.blok.domain + '/',
       reqHeaders: function () {
         return {
           'accept-encoding': 'identity',
