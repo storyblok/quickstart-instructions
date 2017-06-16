@@ -10,6 +10,7 @@ window.onload = () => {
   initRenderingService()
   initTeaserState()
   initRenderingServiceGotIt()
+  initLiveChat()
 
   checkSteps()
 }
@@ -39,13 +40,16 @@ function initShowButton() {
 }
 
 function initLiveChat() {
-  var button = document.querySelector('[data-trigger-livechat]')
-  if (button) {
-    button.addEventListener('click', () => {
-      if (window.storyblok) {
-        window.storyblok.openLiveChat()
-      }
-    })
+  var buttons = document.querySelectorAll('[data-trigger-livechat]')
+  for (var index = 0, max = buttons.length; index < max; index++) {
+    var button = buttons[index];
+    if (button) {
+      button.addEventListener('click', () => {
+        if (window.storyblok) {
+          window.storyblok.openLiveChat()
+        }
+      })
+    }
   }
 }
 
@@ -152,7 +156,7 @@ function checkSteps() {
     doRenderingService()
   }
   if (localStorage.getItem('step-rendering-service-got-it') == 'true') {
-   doRenderingServiceGotIt()
+    doRenderingServiceGotIt()
   }
 }
 
