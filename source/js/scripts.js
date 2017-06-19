@@ -29,7 +29,7 @@ function initTrackButton() {
     var trackButton = trackButtons[index];
     trackButton.addEventListener('click', (event) => {
       var toTrack = trackButton.getAttribute('data-track')
-      ga('send', 'event', 'Button', toTrack, 'quickstart-v2');
+      ga('send', 'event', toTrack, 'Button', 'quickstart-v2');
     })
   }
 }
