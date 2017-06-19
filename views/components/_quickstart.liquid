@@ -341,11 +341,22 @@ print(data.decode("utf-8")){% endraw %}</code></pre>
             <div class="step__text">
               <h2>Fire up your local environment.</h2>
               <p>
-                With the quickstart you've already got all you need to start.
-                In the folder you've started to quickstart execute following commands:
+                With the Storyblok CLI, you can start projects with one command on your terminal - no manual configuration needed. If you don't have the CLI you can install it like this:
               </p>
               <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-                <pre><code>npm install && gulp</code></pre>
+                <pre><code>npm install -g storyblok</code></pre>
+              </div>
+              <p>
+                Run the following command wherever you want your local development in your local files.
+              </p>
+              <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
+                <pre><code>storyblok quickstart space=<em>{{space_id}}</em></code></pre>
+              </div>
+              <p>
+                To run your local environemnt we're using <a href="http://gulpjs.com/" target="_blank">gulp</a> - however, you can change and customize this to fullfil your own needs.
+              </p>
+              <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
+                <pre><code>cd ./<em data-slugify>{{space_name}}</em> npm install && gulp</code></pre>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@
 window.onload = () => {
   window.window.currentStory = gup('_storyblok', window.location.href) + '-'
   initPrettyPrint()
+  initSlugify()
   initTrackButton()
   initStartTourButtons()
   initLiveChat()
@@ -256,6 +257,14 @@ function initPrettyPrint() {
     json = json.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
     json = json.replace('&lt;em&gt;', '<em>').replace('&lt;\/em&gt;', '</em>')
     element.innerHTML = json
+  }
+}
+
+function initSlugify() {
+  var toSlugify = document.querySelectorAll('[data-slugify]')
+  for (var index = 0, max = toSlugify.length; index < max; index++) {
+    var element = toSlugify[index];
+    element.innerHTML = element.innerHTML.replace(/\s+/g, '-').toLowerCase()
   }
 }
 
