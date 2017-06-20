@@ -2,6 +2,14 @@
   background: linear-gradient(to bottom, #002D54 0%, #006B7F 100%);
   padding-top: 1px;
 
+  a {
+    color: #000;
+
+    &:hover {
+      color: #414141;
+    }
+  }
+
   h1 {
     text-align: center;
     color: #FFF;
@@ -15,6 +23,40 @@
   h3 {
     margin-bottom: 0px;
   }
+}
+
+.quickstart__topm {
+  margin-top: 20px;
+}
+
+.quickstart__muted {
+  font-size: 13px;
+  color: #979797;
+}
+
+.quickstart__api {
+  width: 150px;
+  display: inline-block;
+  text-align: center;
+
+  img {
+    width: 130px;
+  }
+
+  span {
+    display: block;
+  }
+}
+
+.quickstart__icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  vertical-align: top;
+  margin-right: 5px;
 }
 
 .quickstart__btn {
@@ -107,7 +149,7 @@
 .quickstart__lang {
   display: inline-block;
   margin-top: 10px;
-  width: 50px;
+  width: 70px;
   text-align: center;
   opacity: 0.5;
   cursor: pointer;
@@ -128,6 +170,7 @@
   display: none;
 
   pre {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
     border-top: 2px solid #CCC;
     overflow: auto;
     display: block;
@@ -160,6 +203,8 @@
 .quickstart__lang--active {
   opacity: 1;
   border-bottom: 2px solid #000;
+  z-index: 100;
+  position: relative;
 }
 
 .quickstart__t--active {
@@ -237,11 +282,14 @@
 .quickstart__table {
   width: 100%;
   text-align: left;
+  border-collapse: collapse;
+
   tr:nth-child(even) {
     background-color: #f2f2f2
   }
+
   th, td {
-    padding: 15px;
+    padding: 10px 15px;
   }
 }
 
@@ -257,10 +305,12 @@
   user-select: none;
   cursor: pointer;
   text-decoration: underline;
-  color: #aaa;
+  color: #000;
+
   &:hover {
     color: #414141;
   }
+
   &:focus {
     outline: none;
   }
@@ -282,11 +332,6 @@
 
 .quickstart__teaser + .quickstart--rendering-service {
   display: block;
-}
-
-#rendering-service, #api-sdk-boilerplates {
-  padding-top: 20px;
-  display: none;
 }
 
 .quickstart--show {

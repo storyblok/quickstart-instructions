@@ -80,6 +80,7 @@ function initFirstAPICall() {
     })
   }
 }
+
 function doFirstAPICall() {
   var toShow = document.querySelector('#first-api')
   if (toShow) {
@@ -189,9 +190,6 @@ function doApiSdkBoilerplateGotIt() {
   step.classList.add('step--active')
 }
 
-
-
-
 function checkSteps() {
   if (localStorage.getItem(window.currentStory + 'step-first-api') == 'true') {
     doFirstAPICall()
@@ -216,9 +214,11 @@ function checkSteps() {
 function initAPIHowtos() {
   var qs = document.querySelectorAll('.quickstart__lang')
   var ct = document.querySelector('.step--choose-tech')
+
   for (var i = 0; i < qs.length; i++) {
-    qs[i].addEventListener('click', function() {
+    qs[i].addEventListener('click', function(e) {
       var qtabs = ct.querySelectorAll('.quickstart__t')
+
       for (var j = 0; j < qtabs.length; j++) {
         qtabs[j].style.display = 'none'
       }
@@ -228,12 +228,11 @@ function initAPIHowtos() {
       }
 
       this.classList = 'quickstart__lang quickstart__lang--active'
-      document.querySelector('[data-tab='+this.getAttribute('data-lang')+']').style.display = 'block'
+      console.log(document.querySelector('[data-tab='+e.currentTarget.getAttribute('data-lang')+']'))
+      document.querySelector('[data-tab='+e.currentTarget.getAttribute('data-lang')+']').style.display = 'block'
     })
   }
 }
-
-
 
 function initPrettyPrint() {
   var toPrettyPrint = document.querySelectorAll('[data-pretty]')
