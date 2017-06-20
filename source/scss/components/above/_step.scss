@@ -52,6 +52,9 @@
   flex-grow: 1;
   -ms-flex-positive: 1;
   min-width: 0px;
+  em {
+    line-height: 1.4;
+  }
 }
 
 .step.step--active + .step {

@@ -42,17 +42,17 @@
           <h2>Your first API Request</h2>
           <p>
             Storyblok is an API based CMS for Components - so it's all about your data - execute a simple GET Request to see the basic structure of the story you're actually editing here.
-            {% if story.content.body == blank %}<button class="btn" data-first-api data-track="interaction: first-api">Make a Call</button>{% endif %}
           </p>
+          <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
+            <pre><code>curl -X GET "https://api.storyblok.com/v1/cdn/stories/{{story.full_slug}}?token={{private_token}}&version=draft"</code></pre>
+          </div>
+          {% if story.content.body == blank %}<button class="btn" data-first-api data-track="interaction: first-api">Run Now</button>{% endif %}
           <div id="first-api" {% if story.content.body == blank %} class="quickstart--hidden"{% endif %}>
             <h3>There you go:</h3>
             <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
               <pre><code data-pretty data-skip-body="true">{{story|json}}</code></pre>
             </div>
             <p>You can do this API Request with every language you can think of - we made some <a href="https://www.storyblok.com/docs/Delivery-Api/introduction" target="_blank">example calls</a> for you.</p>
-            <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-              <pre><code>curl -X GET "https://api.storyblok.com/v1/cdn/stories/{{story.full_slug}}?token={{private_token}}&version=draft"</code></pre>
-            </div>
           </div>
         </div>
       </div>
@@ -350,14 +350,15 @@ print(data.decode("utf-8")){% endraw %}</code></pre>
                 Run the following command wherever you want your local development in your local files to be.
               </p>
               <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-                <pre><code>storyblok quickstart space=<em>{{space_id}}</em></code></pre>
+                <pre><code>storyblok quickstart space=<em>{{space.id}}</em></code></pre>
               </div>
               <p>
                 To run your local environemnt we're using <a href="http://gulpjs.com/" target="_blank">gulp</a> - however, you can change and customize this to fullfil your own needs.
               </p>
               <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-                <pre><code>cd ./<em data-slugify>{{space_name}}</em> npm install && gulp</code></pre>
+                <pre><code>cd ./<em data-slugify>{{space.name}}</em> npm install && gulp</code></pre>
               </div>
+              <em>Tip: We will change your environment to Dev - so your local instance will be displayed in this frame. You can switch between environments in the left bottom corner and add new in the space settings.</em>
             </div>
           </div>
 

@@ -11,7 +11,6 @@ window.onload = () => {
   initFirstAPICall()
   initSecondAPICall()
 
-
   initRenderingService()
   initTeaserState()
   initRenderingServiceGotIt()
