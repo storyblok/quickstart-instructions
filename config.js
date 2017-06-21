@@ -4,11 +4,11 @@
 module.exports = {
   blok: {
     apiVersion: 2,
-    themeId: '40479',
-    domain: 'fc147f74.me.storyblok.com',
+    themeId: 'INSERT_SPACE_ID',
+    domain: 'INSERT_YOUR_DOMAIN',
     apiKey: require('./token'),
     basePath: 'views',
-    quickstartToken: '',
+    quickstartToken: 'TEMP_QUICKSTART_TOKEN',
     environment: 'live'
   }
 }
