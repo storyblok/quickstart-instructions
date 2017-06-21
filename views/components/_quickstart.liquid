@@ -257,8 +257,8 @@
         <div class="step__text">
           <h2>Integrate Storyblok to your project</h2>
 
-          <h3 style="margin-bottom: 5px;">1. Get the data</h3>
-          <p>Get the data <a href="">API Docu</a></p>
+          <h3 class="quickstart__h3">1. Get the data</h3>
+          <p>Install one of the Storyblok clients or call the API directly (<a href="https://www.storyblok.com/docs/Delivery-Api/overview">API Documentation</a>)</p>
 
           <div class="quickstart__langc">
 
@@ -386,11 +386,24 @@ print(data.decode("utf-8")){% endraw %}</code></pre>
           </div>
           </div>
 
-          <h3 style="margin-top: 40px; margin-bottom: 5px;">2. Initiate the frontend editor</h3>
-          <p>Blabla</p>
+          <h3 class="quickstart__h3">2. Initiate the frontend editor</h3>
+          <p class="quickstart__p">Blabla</p>
 
           <div class="quickstart__t quickstart__t--active">
-            <pre><code><span>// Be sure to add the storyblok script before the closing body tag </span>
+            <pre><code>{% raw %}<span>// Example with Twig:</span>
+<span>// If you pass story as variable to your view</span>
+<span>// put the following snippet in your main template</span>
+{% for blok in story.content.body %}
+  {% include 'components/' ~ blok.component ~ '.twig' with { blok: blok } %}
+{% endfor %}
+
+<span>// Then add your first component in components/headline.twig</span>
+{{ blok._editable }}
+&lt;div&gt;
+  &lt;h2&gt;{{ blok.headline }}&lt;/h2&gt;
+&lt;/div&gt;{% endraw %}
+
+<span>// Be sure to add the storyblok script before the closing body tag </span>
 <span>// of your template to initiate the frontend editor</span>
 &lt;script src="//app.storyblok.com/f/storyblok-latest.js"&gt;&lt;/script&gt;
 &lt;script&gt;
@@ -418,7 +431,7 @@ storyblok.init({
       </div>
 
       <div id="rendering-service" {% if proxy_mode %}class="quickstart--show"{% endif %} style="display: none;">
-          <div class="step  {% if proxy_mode %} step--active {% endif %}">
+          <div class="step{% if proxy_mode %} step--active{% endif %}">
             <div class="step__number"><span></span></div>
             <div class="step__text">
               <h2>Fire up your local environment.</h2>
@@ -492,16 +505,20 @@ storyblok.init({
               <h2>Great job!</h2>
               <p>
                 Let me just summaries what you just did:
-                <ul>
-                  <li>Created a space</li>
-                  <li>Created a story</li>
-                  <li>Created a component with a schema in Storyblok</li>
-                  <li>Started a local development environment on your machine</li>
-                  <li>Created the presentation layer for your component</li>
-                </ul>
-                You can now start creating your own components with their individual schemas and their own presentation layers.
-                <button class="btn" data-rendering-service-got-it data-track="interaction: rendering-service-got-it">Got it!</button>
               </p>
+              <ul>
+                <li>Created a space</li>
+                <li>Created a story</li>
+                <li>Created a component with a schema in Storyblok</li>
+                <li>Started a local development environment on your machine</li>
+                <li>Created the presentation layer for your component</li>
+              </ul>
+              <p>
+                You can now start creating your own components with their individual schemas and their own presentation layers.
+              </p>
+              <div class="quickstart__topm">
+                <button class="btn" data-rendering-service-got-it data-track="interaction: rendering-service-got-it">Got it!</button>
+              </div>
             </div>
           </div>
 
