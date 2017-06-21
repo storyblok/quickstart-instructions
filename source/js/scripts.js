@@ -174,6 +174,7 @@ function initRenderingServiceGotIt() {
 function doRenderingServiceGotIt() {
   var step = findAncestor(document.querySelector('[data-rendering-service-got-it]'), 'step')
   step.classList.add('step--active')
+  initDrift()
 }
 
 function initApiSdkBoilerplateGotIt() {
@@ -188,6 +189,35 @@ function initApiSdkBoilerplateGotIt() {
 function doApiSdkBoilerplateGotIt() {
   var step = findAncestor(document.querySelector('[data-api-sdk-boilerplates-got-it]'), 'step')
   step.classList.add('step--active')
+  initDrift()
+}
+
+function initDrift() {
+  if (history.pushState) {
+    var newurl = window.location.href + '&quickstart_done=true'
+    window.history.pushState({path:newurl},'',newurl);
+  }
+
+  !function () {
+    var t;
+    if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
+      t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+      t.factory = function (e) {
+        return function () {
+          var n;
+          return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
+        };
+      }, t.methods.forEach(function (e) {
+        t[e] = t.factory(e);
+      }), t.load = function (t) {
+        var e, n, o, i;
+        e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
+          o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
+          n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+      });
+  }();
+  drift.SNIPPET_VERSION = '0.3.1';
+  drift.load('bkgx5avz5yed');
 }
 
 function checkSteps() {
@@ -216,7 +246,7 @@ function initAPIHowtos() {
   var ct = document.querySelector('.step--choose-tech')
 
   for (var i = 0; i < qs.length; i++) {
-    qs[i].addEventListener('click', function(e) {
+    qs[i].addEventListener('click', function (e) {
       var qtabs = ct.querySelectorAll('.quickstart__t')
 
       for (var j = 0; j < qtabs.length; j++) {
@@ -228,8 +258,8 @@ function initAPIHowtos() {
       }
 
       this.classList = 'quickstart__lang quickstart__lang--active'
-      console.log(document.querySelector('[data-tab='+e.currentTarget.getAttribute('data-lang')+']'))
-      document.querySelector('[data-tab='+e.currentTarget.getAttribute('data-lang')+']').style.display = 'block'
+      console.log(document.querySelector('[data-tab=' + e.currentTarget.getAttribute('data-lang') + ']'))
+      document.querySelector('[data-tab=' + e.currentTarget.getAttribute('data-lang') + ']').style.display = 'block'
     })
   }
 }
@@ -267,8 +297,8 @@ function initSlugify() {
 }
 
 function findAncestor(el, cls) {
-  while ((el = el.parentElement) && !el.classList.contains(cls));
-  return el;
+  while ((el = el.parentElement) && !el.classList.contains(cls))
+    return el
 }
 
 function clearStory(story) {

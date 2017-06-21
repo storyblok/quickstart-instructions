@@ -395,7 +395,7 @@ storyblok.init({
               <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
                 <pre><code>cd ./<em data-slugify>{{space.name}}</em> npm install && gulp</code></pre>
               </div>
-              <em>Tip: We will change your environment to Dev - so your local instance will be displayed in this frame. You can switch between environments in the left bottom corner and add new in the space settings.</em>
+              <p class="quickstart__muted">Tip: We will change your environment to Dev - so your local instance will be displayed in this frame. You can switch between environments in the left bottom corner and add new in the space settings.</p>
             </div>
           </div>
 
@@ -458,20 +458,13 @@ storyblok.init({
               <p>
                 You can now start creating your own components with their individual schemas and their own presentation layers.
               </p>
+              <p class="quickstart__muted">
+                Tip: Simply remove the <code>{% raw %}{% include 'quickstart' %}{% endraw %}</code> from your <code>/views/page.liquid</code> and you're ready to start with your own project.
+                You can checkout the README.md for more information about this basic setup. Have fun!
+              </p>
               <div class="quickstart__topm">
                 <button class="quickstart__btn" data-rendering-service-got-it data-track="interaction: rendering-service-got-it">Got it!</button>
               </div>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step__number"><span></span></div>
-            <div class="step__text">
-              <h2>You are ready!</h2>
-              <p>
-                Simply remove the <code>{% raw %}{% include 'quickstart' %}{% endraw %}</code> from your <code>/views/page.liquid</code> and you're ready to start with your own project.
-                You can checkout the README.md for more information about this basic setup. Have fun!
-              </p>
               <h3><button class="quickstart__button--link" data-trigger-livechat data-track="interaction: rendering-service-more-information">You need more help? Ask us right away!</button></h3>
               <h3>Nice to read:</h3>
               <ul>
@@ -479,11 +472,8 @@ storyblok.init({
                 <li><a target="_blank" href="https://www.storyblok.com/tp/coupled-decoupled-and-headless-content-management-systems">Coupled, Decoupled and Headless Content Management Systems</a></li>
                 <li><a target="_blank" href="https://www.storyblok.com/tp/how-to-get-pagespeed-100">How to optimize your website to a Pagespeed of 100</a></li>
               </ul>
-
             </div>
           </div>
-
-
       </div>
     </div>
   </div>
