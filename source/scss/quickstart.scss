@@ -435,3 +435,15 @@ $brand-color: #09b3af;
 [data-rendering-service-got-it].quickstart--hidden + h2 {
   display: block;
 }
+
+.step.step--active + .step {
+  opacity: 1;
+}
+
+.step + .step {
+  opacity: 0.5;
+}
+
+.quickstart__teaser--hidden + .step {
+  opacity: 0.5;
+}
