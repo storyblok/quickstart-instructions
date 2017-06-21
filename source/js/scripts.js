@@ -2,6 +2,7 @@
 window.onload = () => {
 
   window.window.currentStory = gup('_storyblok', window.location.href) + '-'
+  initBtnToggle()
   initPrettyPrint()
   initSlugify()
   initTrackButton()
@@ -14,7 +15,6 @@ window.onload = () => {
 
   initRenderingService()
   initTeaserState()
-  initRenderingServiceGotIt()
 
   initApiSdkBoilerplates()
   initAPIHowtos()
@@ -22,6 +22,25 @@ window.onload = () => {
 
   checkSteps()
 
+}
+
+var hasClass = function(el, className) {
+  return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
+}
+
+function initBtnToggle() {
+  var toggle = document.querySelectorAll('.step__toggle-btn')
+  for (var i = 0; i < toggle.length; i++) {
+    toggle[i].addEventListener('click', (event) => {
+      var step = event.currentTarget.closest('.step')
+
+      if (hasClass(step, 'step--toggle')) {
+        step.classList.remove('step--toggle')
+      } else {
+        step.classList.add('step--toggle')
+      }
+    })
+  }
 }
 
 function initTrackButton() {
@@ -176,23 +195,6 @@ function initTeaserState() {
   }
 }
 
-function initRenderingServiceGotIt() {
-  var button = document.querySelector('[data-rendering-service-got-it]')
-  if (!!button) {
-    button.addEventListener('click', () => {
-      localStorage.setItem(window.currentStory + 'step-rendering-service-got-it', 'true');
-      doRenderingServiceGotIt()
-    })
-  }
-}
-function doRenderingServiceGotIt() {
-  var button = document.querySelector('[data-rendering-service-got-it]')
-  button.classList.add('quickstart--hidden')
-  var step = findAncestor(button, 'step')
-  step.classList.add('step--active')
-  initDrift()
-}
-
 function initApiSdkBoilerplateGotIt() {
   var button = document.querySelector('[data-api-sdk-boilerplates-got-it]')
   if (!!button) {
@@ -205,35 +207,6 @@ function initApiSdkBoilerplateGotIt() {
 function doApiSdkBoilerplateGotIt() {
   var step = findAncestor(document.querySelector('[data-api-sdk-boilerplates-got-it]'), 'step')
   step.classList.add('step--active')
-  initDrift()
-}
-
-function initDrift() {
-  if (history.pushState && gup('quickstart_done') != 'true') {
-    var newurl = window.location.href + '&quickstart_done=true'
-    window.history.pushState({ path: newurl }, '', newurl);
-  }
-
-  !function () {
-    var t;
-    if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
-      t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
-      t.factory = function (e) {
-        return function () {
-          var n;
-          return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
-        };
-      }, t.methods.forEach(function (e) {
-        t[e] = t.factory(e);
-      }), t.load = function (t) {
-        var e, n, o, i;
-        e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
-          o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
-          n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
-      });
-  }();
-  drift.SNIPPET_VERSION = '0.3.1';
-  drift.load('bkgx5avz5yed');
 }
 
 function checkSteps() {
@@ -245,9 +218,6 @@ function checkSteps() {
   }
   if (localStorage.getItem(window.currentStory + 'step-rendering-service') == 'true') {
     doRenderingService()
-  }
-  if (localStorage.getItem(window.currentStory + 'step-rendering-service-got-it') == 'true') {
-    doRenderingServiceGotIt()
   }
   if (localStorage.getItem(window.currentStory + 'step-api-sdk-boilerplates') == 'true') {
     doApiSdkBoilerplates()

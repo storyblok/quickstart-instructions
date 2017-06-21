@@ -17,7 +17,10 @@
 <body>
 
   <main id="main" role="main">
+    <!-- REMOVE the following line when you are done with the quickstart -->
     {% include 'quickstart' %}
+
+    <!-- Here we include the root component -->
     {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
   </main>
 

@@ -1,4 +1,25 @@
 <link href="//a.storyblok.com/t/40479/assets/css/quickstart.css?6" rel="stylesheet">
+<style type="text/css">
+  .step--active .step__toogle {
+    display: none;
+  }
+
+  .step {
+    padding-bottom: 20px;
+  }
+
+  .step__number span {
+    margin-top: 1px;
+  }
+
+  .step__toggle-btn {
+    cursor: pointer;
+  }
+
+  .step--toggle .step__toogle {
+    display: block;
+  }
+</style>
 
 <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
@@ -32,20 +53,21 @@
       <div class="step step--active">
         <div class="step__number"><span></span></div>
         <div class="step__text">
-          <h2>Create a space and a story</h2>
-          <p>
+          <h2 class="step__toggle-btn">1. Create a space and a story</h2>
+          <p class="step__toogle">
             A space is a place where you keep all the content related to a single project. A story is a <strong>content entry</strong> which contains one or a collection of components.
           </p>
         </div>
         <div class="step__last">
-          <img src="//a.storyblok.com/f/40479/7a07f54a99/space.svg">
+          <img class="step__toogle" src="//a.storyblok.com/f/40479/7a07f54a99/space.svg">
         </div>
       </div>
 
       <div class="step {% if story.content.body != blank %} step--active {% endif %}">
         <div class="step__number"><span></span></div>
         <div class="step__text">
-          <h2>Your first API Request</h2>
+          <h2 class="step__toggle-btn">2. Your first API Request</h2>
+          <div class="step__toogle">
           <p>
             Storyblok is an API based CMS for Components - so it's all about your data - execute a simple GET Request to see the basic structure of the story you're actually editing here.
           </p>
@@ -63,132 +85,139 @@
             </div>
             <p class="quickstart__muted">You can do this API Request with every language you can think of - we made some <a href="https://www.storyblok.com/docs/Delivery-Api/introduction" target="_blank">example calls</a> for you.</p>
           </div>
+          </div>
         </div>
       </div>
 
       <div class="step {% if story.content.body != blank %} step--active {% endif %}">
         <div class="step__number"><span></span></div>
         <div class="step__text">
-          <h2>Create a component and define its structure</h2>
-          <p>
-            Let's create a <strong>teaser component</strong> <i>together</i> - press <strong>start tour</strong>.
-          </p>
-          <div class="quickstart__topm">
-            <button class="quickstart__btn" data-start-tour data-track="interaction: start-tour">
-              <svg class="quickstart__icon"><use xlink:href="#icon-play3"></use></svg>
-              Start tour
-            </button>
+          <h2 class="step__toggle-btn">3. Create a component and define its structure</h2>
+          <div class="step__toogle">
+            <p>
+              Let's create a <strong>teaser component</strong> <i>together</i> - press <strong>start tour</strong>.
+            </p>
+            <div class="quickstart__topm">
+              <button class="quickstart__btn" data-start-tour data-track="interaction: start-tour">
+                <svg class="quickstart__icon"><use xlink:href="#icon-play3"></use></svg>
+                Start tour
+              </button>
+            </div>
           </div>
         </div>
         <div class="step__last">
-          <img src="//a.storyblok.com/f/40479/9de132979f/story.svg">
+          <img class="step__toogle" src="//a.storyblok.com/f/40479/9de132979f/story.svg">
         </div>
       </div>
 
       <div class="step {% if proxy_mode %}step--active{% endif %}">
         <div class="step__number"><span></span></div>
         <div class="step__text">
-          <h2>Good job!</h2>
-          <p>You've just changed content and created your first unique content component! Let's have a look at what has changed after you've done that.</p>
+          <h2 class="step__toggle-btn">4. Check what has changed</h2>
+          <div class="step__toogle">
+            <p>You've just changed content and created your first unique content component! Let's have a look at what has changed after you've done that.</p>
 
-          <div class="quickstart__search">
-            <span class="quickstart__prefix">GET</span>
-            <label>{{ 'search_placeholder'|t }}</label>
-            <input value="https://api.storyblok.com/v1/cdn/stories/{{story.full_slug}}?token={{private_token}}&version=draft" class="quickstart__search-input" type="text">
-            <button class="quickstart__search-btn" data-second-api data-track="interaction: second-api">Send</button>
-          </div>
-
-          <div class="quickstart--hidden" id="second-api">
-            <h3>Response</h3>
-            <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-              <pre><code data-pretty data-skip-body="">{{story|json}}</code></pre>
+            <div class="quickstart__search">
+              <span class="quickstart__prefix">GET</span>
+              <label>{{ 'search_placeholder'|t }}</label>
+              <input value="https://api.storyblok.com/v1/cdn/stories/{{story.full_slug}}?token={{private_token}}&version=draft" class="quickstart__search-input" type="text">
+              <button class="quickstart__search-btn" data-second-api data-track="interaction: second-api">Send</button>
             </div>
-            <p class="quickstart__muted">
-              Tip: You can add more <a href="https://www.storyblok.com/docs/terminology/field-type" target="_blank">fields with different types</a> to your component and fill it with content.
+
+            <div class="quickstart--hidden" id="second-api">
+              <h3>Response</h3>
+              <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
+                <pre><code data-pretty data-skip-body="">{{story|json}}</code></pre>
+              </div>
+              <p class="quickstart__muted">
+                Tip: You can add more <a href="https://www.storyblok.com/docs/terminology/field-type" target="_blank">fields with different types</a> to your component and fill it with content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step {% if proxy_mode %}step--active{% endif %}">
+        <div class="step__number"><span></span></div>
+        <div class="step__text">
+          <h2 class="step__toggle-btn">5. Time to marry the data with a view</h2>
+          <div class="step__toogle">
+            <p>
+              Choose to get the content via the API or using the hosted rendering service.
             </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="step {% if proxy_mode %}step--active{% endif %}">
-        <div class="step__number"><span></span></div>
-        <div class="step__text">
-          <h2>Time to marry the data with a view</h2>
-          <p>
-            Choose to get the content via the API or using the hosted rendering service.
-          </p>
-          <div class="quickstart__topm">
-            <label class="quickstart__api" data-api-sdk-boilerplates data-track="decision: API only">
-              <img src="http://a.storyblok.com/f/39898/abbd7c4028/api_self.svg" />
-              <span><input type="radio" name="type" value="api"> API/SDKs only</span>
-            </label><label class="quickstart__api" data-rendering-service data-track="decision: rendering service">
-              <img src="http://a.storyblok.com/f/39898/b63e394b93/api.svg" />
-              <span><input{% if proxy_mode %} checked="checked"{% endif %} type="radio" name="type" value="rendering"> Rendering Service</span>
-            </label>
-          </div>
-          <div class="quickstart__topm">
-            <button class="quickstart__button--link" data-show="#not-sure" data-track="decision: not-sure">I'm not sure. What is the rendering service?</button>
-            <div id="not-sure" class="quickstart--hidden">
-              <table class="quickstart__table">
-                <tr>
-                  <th></th>
-                  <th>API / SDK</th>
-                  <th>Rendering Service</th>
-                </tr>
-                <tr>
-                  <td>Templating Engine</td>
-                  <td>Any</td>
-                  <td>Liquid</td>
-                </tr>
-                <tr>
-                  <td>Custom Backend Logic</td>
-                  <td>Yes</td>
-                  <td>Predefined Liquid Filters</td>
-                </tr>
-                <tr>
-                  <td>Local Environment</td>
-                  <td>Yes</td>
-                  <td>Yes</td>
-                </tr>
-                <tr>
-                  <td>Dev Environment</td>
-                  <td>Own</td>
-                  <td>Included</td>
-                </tr>
-                <tr>
-                  <td>Live Environment</td>
-                  <td>Own</td>
-                  <td>Included</td>
-                </tr>
-                <tr>
-                  <td>Hosting</td>
-                  <td>No</td>
-                  <td>Yes</td>
-                </tr>
-                <tr>
-                  <td>Custom Domain</td>
-                  <td>Yes</td>
-                  <td>Yes</td>
-                </tr>
-                <tr>
-                  <td>Storyblok Subdomain</td>
-                  <td>No</td>
-                  <td>Yes</td>
-                </tr>
-                <tr>
-                  <td>Included CDN</td>
-                  <td>API / Images / Assets</td>
-                  <td>Everything</td>
-                </tr>
-                <tr>
-                  <td>Pricing</td>
-                  <td>Free</td>
-                  <td>Free</td>
-                </tr>
-              </table>
-              <p>You are still not sure? <button data-trigger-livechat class="quickstart__button--link">Contact us</button> - let's get through this together!</p>
+            <div class="quickstart__topm">
+              <label class="quickstart__api" data-api-sdk-boilerplates data-track="decision: API only">
+                <img src="http://a.storyblok.com/f/39898/abbd7c4028/api_self.svg" />
+                <span><input type="radio" name="type" value="api"> API/SDKs only</span>
+              </label><label class="quickstart__api" data-rendering-service data-track="decision: rendering service">
+                <img src="http://a.storyblok.com/f/39898/b63e394b93/api.svg" />
+                <span><input{% if proxy_mode %} checked="checked"{% endif %} type="radio" name="type" value="rendering"> Rendering Service</span>
+              </label>
             </div>
+            <div class="quickstart__topm">
+              <button class="quickstart__button--link" data-show="#not-sure" data-track="decision: not-sure">I'm not sure. What is the rendering service?</button>
+              <div id="not-sure" class="quickstart--hidden">
+                <table class="quickstart__table">
+                  <tr>
+                    <th></th>
+                    <th>API / SDK</th>
+                    <th>Rendering Service</th>
+                  </tr>
+                  <tr>
+                    <td>Templating Engine</td>
+                    <td>Any</td>
+                    <td>Liquid</td>
+                  </tr>
+                  <tr>
+                    <td>Custom Backend Logic</td>
+                    <td>Yes</td>
+                    <td>Predefined Liquid Filters</td>
+                  </tr>
+                  <tr>
+                    <td>Local Environment</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                  </tr>
+                  <tr>
+                    <td>Dev Environment</td>
+                    <td>Own</td>
+                    <td>Included</td>
+                  </tr>
+                  <tr>
+                    <td>Live Environment</td>
+                    <td>Own</td>
+                    <td>Included</td>
+                  </tr>
+                  <tr>
+                    <td>Hosting</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                  </tr>
+                  <tr>
+                    <td>Custom Domain</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                  </tr>
+                  <tr>
+                    <td>Storyblok Subdomain</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                  </tr>
+                  <tr>
+                    <td>Included CDN</td>
+                    <td>API / Images / Assets</td>
+                    <td>Everything</td>
+                  </tr>
+                  <tr>
+                    <td>Pricing</td>
+                    <td>Free</td>
+                    <td>Free</td>
+                  </tr>
+                </table>
+                <p>You are still not sure? <button data-trigger-livechat class="quickstart__button--link">Contact us</button> - let's get through this together!</p>
+              </div>
 
+            </div>
           </div>
         </div>
       </div>
@@ -402,11 +431,10 @@ storyblok.init({
           <div class="step step--teaser-creation">
             <div class="step__number"><span></span></div>
             <div class="step__text">
-              <h2>Let's create your first presentation of a component</h2>
+              <h2>Last step: Let's create the teaser template</h2>
               <p>
-                You've already created a component in Storyblok - so all what's left to do
-                is to create a presentation for that data. So let's create the file <code>_teaser.liquid</code>
-                in your <code>/views/components/</code> folder.
+                Create the file <code>_teaser.liquid</code>
+                in your <code>/views/components/</code> folder and fill it with following content:
               </p>
               <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
                 <pre><code>{% raw %}&lt;div class=&quot;quickstart__teaser&quot;&gt;
@@ -423,56 +451,18 @@ storyblok.init({
       You can access every attribute you
       define in the schema in the blok variable
       --&gt;
-      {% if blok.headline == blank %}
-        Congrats, you have inserted a teaser to the page!
-      {% else %}
-        {{ blok.headline }}
-      {% endif %}
+      {{ blok.headline }}
       &lt;/h2&gt;
       &lt;h3&gt;
-        You can create new components like &lt;code&gt;views/components/_teaser.liquid&lt;/code&gt; to create your own set of components.
+        Congrats, you have created the teaser template!&lt;br&gt;
+        &lt;a href="https://www.storyblok.com/docs/Rendering-Service/Theme-Documentation"&gt;
+          Read the theme documentation
+        &lt;/a&gt;
         &lt;!-- HINT: Try to change something and the browser window in Storyblok will automatically refresh. --&gt;
     &lt;/h3&gt;
   &lt;/div&gt;
 &lt;/div&gt;{% endraw %}</code></pre>
               </div>
-            </div>
-          </div>
-
-          {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
-
-          <div class="step step--liquid-teaser">
-            <div class="step__number"><span></span></div>
-            <div class="step__text">
-              <h2>Great job!</h2>
-              <p>
-                Let me just summaries what you just did:
-              </p>
-              <ul>
-                <li>Created a space</li>
-                <li>Created a story</li>
-                <li>Created a component with a schema in Storyblok</li>
-                <li>Started a local development environment on your machine</li>
-                <li>Created the presentation layer for your component</li>
-              </ul>
-              <p>
-                You can now start creating your own components with their individual schemas and their own presentation layers.
-              </p>
-              <p class="quickstart__muted">
-                Tip: Simply remove the <code>{% raw %}{% include 'quickstart' %}{% endraw %}</code> from your <code>/views/page.liquid</code> and you're ready to start with your own project.
-                You can checkout the README.md for more information about this basic setup. Have fun!
-              </p>
-              <div class="quickstart__topm">
-                <button class="quickstart__btn" data-rendering-service-got-it data-track="interaction: rendering-service-got-it">Got it!</button>
-                <h2>Now - Let's create nice stuff together!</h2>
-              </div>
-              <button class="quickstart__button--link" data-trigger-livechat data-track="interaction: rendering-service-more-information">You need more help? Ask us right away!</button>
-              <h3>Nice to read:</h3>
-              <ul>
-                <li><a target="_blank" href="https://www.storyblok.com/tp/component-thinking-improves-productivity">How thinking in components can increase your productivity</a></li>
-                <li><a target="_blank" href="https://www.storyblok.com/tp/coupled-decoupled-and-headless-content-management-systems">Coupled, Decoupled and Headless Content Management Systems</a></li>
-                <li><a target="_blank" href="https://www.storyblok.com/tp/how-to-get-pagespeed-100">How to optimize your website to a Pagespeed of 100</a></li>
-              </ul>
             </div>
           </div>
       </div>
@@ -489,4 +479,12 @@ storyblok.init({
   ga('create', 'UA-90566930-3', 'auto');
   ga('send', 'pageview');
 
+  var teaser = document.querySelector('.quickstart__teaser');
+
+  if (teaser) {
+    var quickstart = document.querySelector('.quickstart');
+    if (quickstart) {
+      quickstart.style.display = 'none';
+    }
+  }
 </script>
