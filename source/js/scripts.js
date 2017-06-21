@@ -1,6 +1,5 @@
 // pretty print on load
 window.onload = () => {
-
   window.window.currentStory = gup('_storyblok', window.location.href) + '-'
   initBtnToggle()
   initPrettyPrint()
@@ -21,7 +20,6 @@ window.onload = () => {
   initApiSdkBoilerplateGotIt()
 
   checkSteps()
-
 }
 
 var hasClass = function(el, className) {
@@ -144,7 +142,7 @@ function initRenderingService() {
 
       window.scrollIntoViewPolyfill();
       setTimeout(() => {
-        document.querySelector('#rendering-service').scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('.step__5').scrollIntoView({ behavior: 'smooth' });
       }, 0)
 
       doRenderingService()
@@ -171,7 +169,7 @@ function initApiSdkBoilerplates() {
 
       window.scrollIntoViewPolyfill();
       setTimeout(() => {
-        document.querySelector('#api-sdk-boilerplates').scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('.step__5').scrollIntoView({ behavior: 'smooth' });
       }, 0);
       doApiSdkBoilerplates()
     })

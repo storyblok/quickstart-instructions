@@ -9,6 +9,7 @@ $breakpoint-large-max: ($breakpoint-xlarge - 1);
 $brand-color: #09b3af;
 
 .quickstart {
+  font-family: 'Titillium Web', Helvetica, sans-serif;
   background: linear-gradient(to bottom, #002D54 0%, #006B7F 100%);
   padding-top: 1px;
 
@@ -446,4 +447,28 @@ $brand-color: #09b3af;
 
 .quickstart__teaser--hidden + .step {
   opacity: 0.5;
+}
+
+.step .step__toogle {
+  display: none;
+}
+
+.step {
+  padding-bottom: 20px;
+}
+
+.step__number span {
+  margin-top: 1px;
+}
+
+.step__toggle-btn {
+  cursor: pointer;
+}
+
+.step__toggle-btn:hover {
+  text-decoration: underline;
+}
+
+.step--toggle .step__toogle {
+  display: block;
 }
