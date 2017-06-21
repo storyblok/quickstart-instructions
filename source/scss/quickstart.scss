@@ -165,6 +165,10 @@ $brand-color: #09b3af;
   }
 }
 
+.quickstart__teaser--hidden {
+  display: none !important;
+}
+
 .quickstart__langc {
   text-align: center;
   margin-top: 20px;
@@ -422,4 +426,12 @@ $brand-color: #09b3af;
   font-size: 1rem;
   font-family: 'Titillium Web', Helvetica, sans-serif;
   cursor: pointer;
+}
+
+
+[data-rendering-service-got-it] + h2 {
+  display: none;
+}
+[data-rendering-service-got-it].quickstart--hidden + h2 {
+  display: block;
 }

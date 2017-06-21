@@ -186,7 +186,9 @@ function initRenderingServiceGotIt() {
   }
 }
 function doRenderingServiceGotIt() {
-  var step = findAncestor(document.querySelector('[data-rendering-service-got-it]'), 'step')
+  var button = document.querySelector('[data-rendering-service-got-it]')
+  button.classList.add('quickstart--hidden')
+  var step = findAncestor(button, 'step')
   step.classList.add('step--active')
   initDrift()
 }
