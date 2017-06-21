@@ -207,7 +207,7 @@ function doApiSdkBoilerplateGotIt() {
 }
 
 function initDrift() {
-  if (history.pushState) {
+  if (history.pushState && gup('quickstart_done') != 'true') {
     var newurl = window.location.href + '&quickstart_done=true'
     window.history.pushState({ path: newurl }, '', newurl);
   }
@@ -310,9 +310,9 @@ function initSlugify() {
   }
 }
 
-function findAncestor(el, cls) {
-  while ((el = el.parentElement) && !el.classList.contains(cls))
-    return el
+function findAncestor (el, cls) {
+    while ((el = el.parentElement) && !el.classList.contains(cls));
+    return el;
 }
 
 function clearStory(story) {
