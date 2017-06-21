@@ -17,7 +17,6 @@ window.onload = () => {
 
   initApiSdkBoilerplates()
   initAPIHowtos()
-  initApiSdkBoilerplateGotIt()
 
   checkSteps()
 }
@@ -191,20 +190,6 @@ function initTeaserState() {
   if (!!teaser) {
     document.querySelector('.step--teaser-creation').classList.add('step--active')
   }
-}
-
-function initApiSdkBoilerplateGotIt() {
-  var button = document.querySelector('[data-api-sdk-boilerplates-got-it]')
-  if (!!button) {
-    button.addEventListener('click', () => {
-      localStorage.setItem(window.currentStory + 'step-api-sdk-boilerplates-got-it', 'true');
-      doApiSdkBoilerplateGotIt()
-    })
-  }
-}
-function doApiSdkBoilerplateGotIt() {
-  var step = findAncestor(document.querySelector('[data-api-sdk-boilerplates-got-it]'), 'step')
-  step.classList.add('step--active')
 }
 
 function checkSteps() {

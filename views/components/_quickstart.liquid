@@ -365,8 +365,7 @@ storyblok.init({
           </div>
           <br>
           <div class="quickstart__text--center">
-            <button class="quickstart__btn" data-api-sdk-boilerplates-got-it data-track="interaction: api-sdk-boilerplates-got-it">I got it!</button><br>
-            <button class="quickstart__button--link" data-trigger-livechat data-track="interaction: api-sdk-boilerplates-more-information">You got some questions?</button>
+            <button class="quickstart__btn" data-trigger-livechat data-track="interaction: api-sdk-boilerplates-more-information">You got some questions?</button>
           </div>
           <h3>Nice to read:</h3>
           <ul>
@@ -385,26 +384,28 @@ storyblok.init({
           <div class="step{% if proxy_mode %} step--active{% endif %}">
             <div class="step__number"><span></span></div>
             <div class="step__text">
-              <h2>Fire up your local environment.</h2>
-              <p>
-                With the Storyblok CLI, you can start projects with one command on your terminal - no manual configuration needed. If you don't have the CLI you can install it like this:
-              </p>
-              <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-                <pre><code>npm install -g storyblok</code></pre>
+              <h2 class="step__toggle-btn">Fire up your local environment.</h2>
+              <div class="step__toogle">
+                <p>
+                  With the Storyblok CLI, you can start projects with one command on your terminal - no manual configuration needed. If you don't have the CLI you can install it like this:
+                </p>
+                <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
+                  <pre><code>npm install -g storyblok</code></pre>
+                </div>
+                <p>
+                  Run the following command wherever you want your local development in your local files to be.
+                </p>
+                <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
+                  <pre><code>storyblok quickstart --space=<em>{{space.id}}</em></code></pre>
+                </div>
+                <p>
+                  To run your local environemnt we're using <a href="http://gulpjs.com/" target="_blank">gulp</a> - however, you can change and customize this to fullfil your own needs.
+                </p>
+                <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
+                  <pre><code>cd ./<em data-slugify>{{space.name}}</em> && npm install && gulp</code></pre>
+                </div>
+                <p class="quickstart__muted">Tip: We will change your environment to Dev - so your local instance will be displayed in this frame. You can switch between environments in the left bottom corner and add new in the space settings.</p>
               </div>
-              <p>
-                Run the following command wherever you want your local development in your local files to be.
-              </p>
-              <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-                <pre><code>storyblok quickstart --space=<em>{{space.id}}</em></code></pre>
-              </div>
-              <p>
-                To run your local environemnt we're using <a href="http://gulpjs.com/" target="_blank">gulp</a> - however, you can change and customize this to fullfil your own needs.
-              </p>
-              <div class="quickstart__t quickstart__t--borderless quickstart__t--active">
-                <pre><code>cd ./<em data-slugify>{{space.name}}</em> && npm install && gulp</code></pre>
-              </div>
-              <p class="quickstart__muted">Tip: We will change your environment to Dev - so your local instance will be displayed in this frame. You can switch between environments in the left bottom corner and add new in the space settings.</p>
             </div>
           </div>
 
@@ -435,7 +436,7 @@ storyblok.init({
       &lt;/h2&gt;
       &lt;h3&gt;
         Congrats, you have created the teaser template!&lt;br&gt;
-        &lt;a href="https://www.storyblok.com/docs/Rendering-Service/Theme-Documentation"&gt;
+        &lt;a target="_blank" href="https://www.storyblok.com/docs/Rendering-Service/Theme-Documentation"&gt;
           Read the theme documentation
         &lt;/a&gt;
         &lt;!-- HINT: Try to change something and the browser window in Storyblok will automatically refresh. --&gt;
