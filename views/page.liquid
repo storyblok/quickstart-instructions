@@ -17,9 +17,7 @@
 <body>
 
   <main id="main" role="main">
-
-   {% include 'quickstart' %}
-
+    {% include 'quickstart' %}
     {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
   </main>
 
