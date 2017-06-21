@@ -50,6 +50,14 @@ gulp.task('styles:above', function () {
     .pipe(gulp.dest('./views/components/'))
 })
 
+gulp.task('styles:quickstart', function () {
+  return gulp.src('source/scss/quickstart.scss')
+    .pipe(sassGlob())
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(gulp.dest('./views/assets/css/'))
+    .pipe(browserSync.stream())
+})
+
 gulp.task('scripts', function () {
   return gulp.src('source/js/scripts.js')
     .pipe(gulpWebpack({
