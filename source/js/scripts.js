@@ -1,5 +1,6 @@
 // pretty print on load
 window.onload = () => {
+
   window.window.currentStory = gup('_storyblok', window.location.href) + '-'
   initPrettyPrint()
   initSlugify()
@@ -20,6 +21,7 @@ window.onload = () => {
   initApiSdkBoilerplateGotIt()
 
   checkSteps()
+
 }
 
 function initTrackButton() {
@@ -120,6 +122,12 @@ function initRenderingService() {
     button.addEventListener('click', () => {
       localStorage.setItem(window.currentStory + 'step-rendering-service', 'true');
       localStorage.setItem(window.currentStory + 'step-api-sdk-boilerplates', 'false');
+
+      window.scrollIntoViewPolyfill();
+      setTimeout(() => {
+        document.querySelector('#rendering-service').scrollIntoView({ behavior: 'smooth' });
+      }, 0)
+
       doRenderingService()
     })
   }
@@ -141,6 +149,11 @@ function initApiSdkBoilerplates() {
     button.addEventListener('click', () => {
       localStorage.setItem(window.currentStory + 'step-rendering-service', 'false');
       localStorage.setItem(window.currentStory + 'step-api-sdk-boilerplates', 'true');
+
+      window.scrollIntoViewPolyfill();
+      setTimeout(() => {
+        document.querySelector('#api-sdk-boilerplates').scrollIntoView({ behavior: 'smooth' });
+      }, 0);
       doApiSdkBoilerplates()
     })
   }
@@ -150,6 +163,7 @@ function doApiSdkBoilerplates() {
   if (!!toShow) {
     toShow.classList.add('quickstart--show')
     document.querySelector('#rendering-service').classList.remove('quickstart--show')
+
     var step = findAncestor(document.querySelector('[data-api-sdk-boilerplates]'), 'step')
     step.classList.add('step--active')
   }
@@ -195,7 +209,7 @@ function doApiSdkBoilerplateGotIt() {
 function initDrift() {
   if (history.pushState) {
     var newurl = window.location.href + '&quickstart_done=true'
-    window.history.pushState({path:newurl},'',newurl);
+    window.history.pushState({ path: newurl }, '', newurl);
   }
 
   !function () {
@@ -321,3 +335,6 @@ function gup(name, url) {
   if (!results[2]) return '';
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+// Scroll Into View Polyfill
+var x = function (o, l, t) { "use strict"; function e() { function e(o, l) { this.scrollLeft = o, this.scrollTop = l } function r(o) { return .5 * (1 - Math.cos(Math.PI * o)) } function c(o) { if ("object" != typeof o || null === o || o.behavior === t || "auto" === o.behavior || "instant" === o.behavior) return !0; if ("object" == typeof o && "smooth" === o.behavior) return !1; throw new TypeError("behavior not valid") } function s(t) { var e, r, c; do { e = (t = t.parentNode) === l.body, r = t.clientHeight < t.scrollHeight || t.clientWidth < t.scrollWidth, c = "visible" === o.getComputedStyle(t, null).overflow } while (!e && (!r || c)); return e = r = c = null, t } function i(l) { var t, e, c, s = (h() - l.startTime) / f; t = r(s = s > 1 ? 1 : s), e = l.startX + (l.x - l.startX) * t, c = l.startY + (l.y - l.startY) * t, l.method.call(l.scrollable, e, c), e === l.x && c === l.y || o.requestAnimationFrame(i.bind(o, l)) } function n(t, r, c) { var s, n, a, f, u = h(); t === l.body ? (s = o, n = o.scrollX || o.pageXOffset, a = o.scrollY || o.pageYOffset, f = p.scroll) : (s = t, n = t.scrollLeft, a = t.scrollTop, f = e), i({ scrollable: s, method: f, startTime: u, startX: n, startY: a, x: r, y: c }) } if (!("scrollBehavior" in l.documentElement.style)) { var a = o.HTMLElement || o.Element, f = 468, p = { scroll: o.scroll || o.scrollTo, scrollBy: o.scrollBy, elScroll: a.prototype.scroll || e, scrollIntoView: a.prototype.scrollIntoView }, h = o.performance && o.performance.now ? o.performance.now.bind(o.performance) : Date.now; o.scroll = o.scrollTo = function () { c(arguments[0]) ? p.scroll.call(o, arguments[0].left || arguments[0], arguments[0].top || arguments[1]) : n.call(o, l.body, ~~arguments[0].left, ~~arguments[0].top) }, o.scrollBy = function () { c(arguments[0]) ? p.scrollBy.call(o, arguments[0].left || arguments[0], arguments[0].top || arguments[1]) : n.call(o, l.body, ~~arguments[0].left + (o.scrollX || o.pageXOffset), ~~arguments[0].top + (o.scrollY || o.pageYOffset)) }, a.prototype.scroll = a.prototype.scrollTo = function () { c(arguments[0]) ? p.elScroll.call(this, arguments[0].left || arguments[0], arguments[0].top || arguments[1]) : n.call(this, this, arguments[0].left, arguments[0].top) }, a.prototype.scrollBy = function () { var o = arguments[0]; "object" == typeof o ? this.scroll({ left: o.left + this.scrollLeft, top: o.top + this.scrollTop, behavior: o.behavior }) : this.scroll(this.scrollLeft + o, this.scrollTop + arguments[1]) }, a.prototype.scrollIntoView = function () { if (c(arguments[0])) p.scrollIntoView.call(this, arguments[0] || !0); else { var t = s(this), e = t.getBoundingClientRect(), r = this.getBoundingClientRect(); t !== l.body ? (n.call(this, t, t.scrollLeft + r.left - e.left, t.scrollTop + r.top - e.top), o.scrollBy({ left: e.left, top: e.top, behavior: "smooth" })) : o.scrollBy({ left: r.left, top: r.top, behavior: "smooth" }) } } } } window.scrollIntoViewPolyfill = e }(window, document);
